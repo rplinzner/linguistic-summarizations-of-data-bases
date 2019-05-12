@@ -10,9 +10,6 @@ namespace View.ViewModel
     {
         #region private fields
 
-        
-
-
         #endregion
         #region Theme related fields
         private const string RegistryKeyPath = @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
@@ -26,6 +23,12 @@ namespace View.ViewModel
         #region Command Props
 
         public ICommand DoSomethingPlox { get; }
+
+        #endregion
+
+        #region Props
+
+        
 
         #endregion
 
