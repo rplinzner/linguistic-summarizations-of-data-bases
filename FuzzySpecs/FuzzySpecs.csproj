@@ -52,6 +52,7 @@
     <Compile Include="ClassicSetSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrapezoidalFunctionSpecs.cs" />
+    <Compile Include="TriangularFunctionSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

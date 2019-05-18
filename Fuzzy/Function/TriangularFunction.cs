@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fuzzy.Function
 {
@@ -12,22 +8,28 @@ namespace Fuzzy.Function
         public double B { get; set; }
         public double C { get; set; }
 
+        // c
+        //a b
 
         public TriangularFunction(double a, double b)
         {
             A = a;
             B = b;
-            C = (b - a) / 2;
+            C = A + ((B - A) / 2.0);
         }
         
         public double Range()
         {
-            throw new NotImplementedException();
+            return Math.Abs(B - A);
         }
 
         public double Value(double x)
         {
-            throw new NotImplementedException();
+            if (x < A || x > B) return 0;
+            if (Math.Abs(x) == C) return 1;
+            if (x > A && x < C) return (x - A) / (C - A);
+            if (x > C && x < B) return (B - x) / (B - C);
+            return 0;
         }
     }
 }

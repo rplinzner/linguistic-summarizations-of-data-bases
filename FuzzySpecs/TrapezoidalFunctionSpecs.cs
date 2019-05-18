@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Fuzzy.Function;
+﻿using Fuzzy.Function;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FuzzySpecs
