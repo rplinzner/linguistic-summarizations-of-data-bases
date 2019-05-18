@@ -8,7 +8,7 @@ namespace FuzzySpecs
     public class ClassicSetSpecs
     {
         [TestMethod]
-        public void SumOfTwoClassicSets()
+        public void SumOfClassicSets()
         {
             ClassicSet set1 = new ClassicSet(new List<int>()
             {
@@ -28,7 +28,7 @@ namespace FuzzySpecs
         }
 
         [TestMethod]
-        public void MultiplicationOfTwoClassicsSets()
+        public void MultiplicationOfClassicsSets()
         {
             ClassicSet set1 = new ClassicSet(new List<int>()
             {

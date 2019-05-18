@@ -23,7 +23,7 @@ namespace FuzzySpecs
         [TestMethod]
         public void RangeWhenAandBAreOfDifferentSigns()
         {
-            TrapezoidalFunction func = new TrapezoidalFunction(-1.0, 2.0, 1/8, -0.8);
+            TrapezoidalFunction func = new TrapezoidalFunction(-1.0, 2.0, 1.8, -0.8);
             Assert.AreEqual(func.Range(), 3.0);
         }
 
