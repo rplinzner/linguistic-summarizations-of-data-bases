@@ -1,4 +1,4 @@
-﻿namespace Fuzzy
+﻿namespace Fuzzy.Set
 {
     public interface ISet<T>
     {

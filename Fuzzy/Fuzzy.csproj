@@ -41,10 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassicSet.cs" />
-    <Compile Include="FuzzySet.cs" />
+    <Compile Include="Function\IFunction.cs" />
+    <Compile Include="Function\TrapezoidalFunction.cs" />
+    <Compile Include="Set\ClassicSet.cs" />
+    <Compile Include="Set\FuzzySet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Set.cs" />
+    <Compile Include="Set\ISet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

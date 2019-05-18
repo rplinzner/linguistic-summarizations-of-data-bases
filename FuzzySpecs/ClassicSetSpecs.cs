@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Fuzzy;
+﻿using System.Collections.Generic;
+using Fuzzy.Set;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FuzzySpecs
