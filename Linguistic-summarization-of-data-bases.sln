@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{2EA89AF1-2A30-496E-8429-E218874676CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{9E9DDE0C-BB4F-406E-97B6-03AE7E8B6E5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSpecs", "Tests\DataSpecs.csproj", "{9E9DDE0C-BB4F-406E-97B6-03AE7E8B6E5D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fuzzy", "Fuzzy\Fuzzy.csproj", "{23494208-2C84-4F56-B9A1-321899CD74E2}"
 EndProject
