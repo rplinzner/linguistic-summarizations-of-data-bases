@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{9E9DDE0C-BB4F-406E-97B6-03AE7E8B6E5D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fuzzy", "Fuzzy\Fuzzy.csproj", "{23494208-2C84-4F56-B9A1-321899CD74E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuzzySpecs", "FuzzySpecs\FuzzySpecs.csproj", "{9C908757-FF34-4CDF-9E1F-B0E4A4F27A13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{9E9DDE0C-BB4F-406E-97B6-03AE7E8B6E5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E9DDE0C-BB4F-406E-97B6-03AE7E8B6E5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E9DDE0C-BB4F-406E-97B6-03AE7E8B6E5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23494208-2C84-4F56-B9A1-321899CD74E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23494208-2C84-4F56-B9A1-321899CD74E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23494208-2C84-4F56-B9A1-321899CD74E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23494208-2C84-4F56-B9A1-321899CD74E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C908757-FF34-4CDF-9E1F-B0E4A4F27A13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C908757-FF34-4CDF-9E1F-B0E4A4F27A13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C908757-FF34-4CDF-9E1F-B0E4A4F27A13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C908757-FF34-4CDF-9E1F-B0E4A4F27A13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
