@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Function\EmptyFunction.cs" />
     <Compile Include="Function\IFunction.cs" />
     <Compile Include="Function\TrapezoidalFunction.cs" />
     <Compile Include="Function\TriangularFunction.cs" />

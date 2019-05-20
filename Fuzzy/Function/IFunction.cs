@@ -4,5 +4,6 @@
     {
         double Value(double x);
         double Range();
+        double GetHeight();
     }
 }
