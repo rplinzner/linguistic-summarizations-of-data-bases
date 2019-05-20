@@ -35,5 +35,16 @@ namespace Fuzzy.Function
         }
 
         public double GetHeight() => Height;
+
+
+        public double[] GetCore()
+        {
+            throw new NotImplementedException();
+        }
+
+        public double[] GetSupp()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

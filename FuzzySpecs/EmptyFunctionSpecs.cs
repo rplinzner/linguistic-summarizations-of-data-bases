@@ -32,5 +32,15 @@ namespace FuzzySpecs
         {
             Assert.AreEqual(func.GetHeight(), 0);
         }
+        [TestMethod]
+        public void GetCoreReturnsNaN()
+        {
+            CollectionAssert.AreEqual(func.GetCore(), new double[] { double.NaN, double.NaN });
+        }
+        [TestMethod]
+        public void GetSuppReturnsNaN()
+        {
+            CollectionAssert.AreEqual(func.GetSupp(), new double[] { double.NaN, double.NaN });
+        }
     }
 }
