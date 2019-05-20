@@ -66,5 +66,18 @@ namespace FuzzySpecs
             TrapezoidalFunction func = new TrapezoidalFunction(1.0, 2.0, 1.6, 1.5);
             Assert.AreEqual(func.Value(1.8), 0.5);
         }
+
+        [TestMethod]
+        public void HeightDefaultsTo1()
+        {
+            TrapezoidalFunction func = new TrapezoidalFunction(1.0, 2.0, 1.6, 1.5);
+            Assert.AreEqual(func.GetHeight(), 1.0);
+        }
+
+        public void AllowsToChangeHeight()
+        {
+            TrapezoidalFunction func = new TrapezoidalFunction(1.0, 2.0, 1.6, 1.5, 0.5);
+            Assert.AreEqual(func.GetHeight(), 0.5);
+        }
     }
 }

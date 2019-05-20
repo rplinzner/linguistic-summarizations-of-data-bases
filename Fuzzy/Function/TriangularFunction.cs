@@ -7,15 +7,17 @@ namespace Fuzzy.Function
         public double A { get; set; }
         public double B { get; set; }
         public double C { get; set; }
+        public double Height { get; set; }
 
         // c
         //a b
 
-        public TriangularFunction(double a, double b)
+        public TriangularFunction(double a, double b, double height = 1.0)
         {
             A = a;
             B = b;
             C = A + ((B - A) / 2.0);
+            Height = height;
         }
         
         public double Range()
@@ -31,5 +33,7 @@ namespace Fuzzy.Function
             if (x > C && x < B) return (B - x) / (B - C);
             return 0;
         }
+
+        public double GetHeight() => Height;
     }
 }

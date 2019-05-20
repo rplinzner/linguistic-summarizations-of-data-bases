@@ -63,5 +63,18 @@ namespace FuzzySpecs
             TriangularFunction func = new TriangularFunction(0.0, 4.0);
             Assert.AreEqual(func.Value(3.0), 0.5);
         }
+
+        [TestMethod]
+        public void HeightDefaultsTo1()
+        {
+            TriangularFunction func = new TriangularFunction(0.0, 4.0);
+            Assert.AreEqual(func.GetHeight(), 1.0);
+        }
+
+        public void AllowsToChangeHeight()
+        {
+            TriangularFunction func = new TriangularFunction(0.0, 4.0, 0.5);
+            Assert.AreEqual(func.GetHeight(), 0.5);
+        }
     }
 }

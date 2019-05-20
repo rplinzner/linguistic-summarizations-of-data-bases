@@ -8,15 +8,16 @@ namespace Fuzzy.Function
         public double B { get; set; }
         public double C { get; set; }
         public double D { get; set; }
-
+        public double Height { get; set; }
         //   d    c
         //  a      b
-        public TrapezoidalFunction(double a, double b, double c, double d)
+        public TrapezoidalFunction(double a, double b, double c, double d, double height = 1)
         {
             A = a;
             B = b;
             C = c;
             D = d;
+            Height = height;
         }
 
         public double Value(double x)
@@ -31,5 +32,7 @@ namespace Fuzzy.Function
         {
             return Math.Abs(B - A);
         }
+
+        public double GetHeight() => Height;
     }
 }
