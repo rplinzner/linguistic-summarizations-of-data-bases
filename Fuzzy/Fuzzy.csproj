@@ -49,6 +49,10 @@
     <Compile Include="Set\FuzzySet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Set\ISet.cs" />
+    <Compile Include="Summarizer\Base.cs" />
+    <Compile Include="Summarizer\Qualifier.cs" />
+    <Compile Include="Summarizer\Quantifier.cs" />
+    <Compile Include="Summarizer\Summarizer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
