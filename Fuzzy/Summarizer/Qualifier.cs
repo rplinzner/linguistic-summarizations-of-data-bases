@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Fuzzy.Set;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fuzzy.Summarizer
 {
-    class Qualifier
+    public class Qualifier : Base
     {
+        public Qualifier() : base() { }
     }
 }
