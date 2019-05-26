@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using Fuzzy.Function;
@@ -8,7 +9,7 @@ using View.ViewModel.Base;
 
 namespace View.ViewModel
 {
-    public class SummarizerVM : BaseVM
+    public class SummarizerVM : BaseVM, IFunctionSelector
     {
         private MainWindowVM Parent { get; set; }
         public ObservableCollection<AttributesListVm> AttributesList { get; set; }
@@ -24,11 +25,12 @@ namespace View.ViewModel
 
         public string LabelNameTB { get; set; }
         public ICommand OpenFunctionParamsWindow { get; set; }
-        public ICommand AddSummarizer { get; set; }
+        
 
         public FunctionSelectionVM FunctionSelectionVm { get; set; }
 
         public Summarizer SummarizerSelected { get; set; }
+        private FunctionSelectionWindow _window;
 
         public SummarizerVM(MainWindowVM parent)
         {
@@ -38,11 +40,11 @@ namespace View.ViewModel
                 "Trapezoidal",
                 "Triangular"
             };
-            AddSummarizer = new RelayCommand(AddToSummarizers);
+           
             OpenFunctionParamsWindow = new RelayCommand(ShowFunctionWindow);
         }
 
-        private void AddToSummarizers()
+        public void AddToCollection()
         {
             if (FunctionSelectionVm.Function == null)
             {
@@ -52,6 +54,11 @@ namespace View.ViewModel
             AttributeSelected.Summarizers.Add(new Summarizer(LabelNameTB, new FuzzySet(FunctionSelectionVm.Function)));
         }
 
+        public void Close()
+        {
+            _window.Close();
+        }
+
         private void ShowFunctionWindow()
         {
             if (string.IsNullOrEmpty(SelectedFunction))
@@ -59,13 +66,27 @@ namespace View.ViewModel
                 MessageBox.Show("Please choose function type");
                 return;
             }
-            FunctionSelectionVm = new FunctionSelectionVM(SelectedFunction, AttributeSelected.Min, AttributeSelected.Max);
-            FunctionSelectionWindow window = new FunctionSelectionWindow()
+
+            try
             {
-                DataContext = FunctionSelectionVm
-            };
-            window.Show();
+                FunctionSelectionVm =
+                    new FunctionSelectionVM(SelectedFunction, AttributeSelected.Min, AttributeSelected.Max, this);
+                _window = new FunctionSelectionWindow()
+                {
+                    DataContext = FunctionSelectionVm
+                };
+                _window.Show();
+                
+                
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            
 
         }
+
+       
     }
 }
