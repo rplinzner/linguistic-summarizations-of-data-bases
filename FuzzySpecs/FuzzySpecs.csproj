@@ -58,6 +58,7 @@
     <Compile Include="SummarizerSpecs.cs" />
     <Compile Include="QuantifierSpecs.cs" />
     <Compile Include="QualifierSpecs.cs" />
+    <Compile Include="SummarySpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

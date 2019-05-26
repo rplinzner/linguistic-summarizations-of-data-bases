@@ -11,7 +11,7 @@ namespace Fuzzy.Quality
         public Quantifier Quantifier;
         public Summarizer.Summarizer Summarizer1 { get; set; }
         public Summarizer.Summarizer Summarizer2 { get; set; }
-        public string Operation { get; set; }
+        public string Operation { get; set; } = "NONE";
 
         public double Call()
         {
