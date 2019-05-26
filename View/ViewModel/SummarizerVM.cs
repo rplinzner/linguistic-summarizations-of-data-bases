@@ -8,7 +8,7 @@ using View.ViewModel.Base;
 
 namespace View.ViewModel
 {
-    public class SetupVM : BaseVM
+    public class SummarizerVM : BaseVM
     {
         private MainWindowVM Parent { get; set; }
         public ObservableCollection<AttributesListVm> AttributesList { get; set; }
@@ -30,7 +30,7 @@ namespace View.ViewModel
 
         public Summarizer SummarizerSelected { get; set; }
 
-        public SetupVM(MainWindowVM parent)
+        public SummarizerVM(MainWindowVM parent)
         {
             Parent = parent;
             AttributesList = AtributesLoader.ConvertCoverToAtributesListVms(parent.Covers);

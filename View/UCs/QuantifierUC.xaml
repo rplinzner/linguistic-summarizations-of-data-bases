@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="View.QuantifierUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <TextBox Grid.Column="0" 
+                 Text="{Binding LabelNameTB, UpdateSourceTrigger=PropertyChanged}" Margin="5"
+                 VerticalAlignment="Center"
+                 materialDesign:HintAssist.Hint="Label"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+        />
+            <ComboBox 
+            materialDesign:HintAssist.Hint="Function"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            Grid.Column="0"
+            ItemsSource="{Binding FunctionComboBox}" 
+            SelectedItem="{Binding SelectedFunction}"
+            Margin="5"/>
+            <Button
+            Grid.Column="0"
+            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+            Margin="8"
+            ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+            Command="{Binding OpenFunctionParamsWindow}">
+                Function Parameters
+            </Button>
+            <Button
+                Grid.Column="0"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Margin="8"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                Command="{Binding AddQuantifier}">
+                Add Quantifier
+            </Button>
+        </StackPanel>
+
+        <ListBox 
+            Grid.Column="1"
+            Margin="8"
+            ItemsSource="{Binding  Quantifiers}"
+            SelectedItem="{Binding QuantifierSelected}"
+        />
+
+    </Grid>
+</UserControl>

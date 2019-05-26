@@ -32,7 +32,8 @@ namespace View.ViewModel
 
         #region OtherVM
 
-        public SetupVM SetupVm { get; set; }
+        public SummarizerVM SummarizerVm { get; set; }
+        public QuantifierVM QuantifierVm { get; set; }
 
         #endregion
 
@@ -41,7 +42,8 @@ namespace View.ViewModel
             ReadWindowsSetting();
             ApplyBase(_isDarkTheme);
             Covers = CoverRepository.All();
-            SetupVm = new SetupVM(this);
+            SummarizerVm = new SummarizerVM(this);
+            QuantifierVm = new QuantifierVM(this);
         }
 
         #region Theme Solving Methods

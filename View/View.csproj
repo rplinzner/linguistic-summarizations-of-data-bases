@@ -86,6 +86,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UCs\QuantifierUC.xaml.cs">
+      <DependentUpon>QuantifierUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\QuantifierVM.cs" />
     <Compile Include="Windows\FunctionSelectionWindow.xaml.cs">
       <DependentUpon>FunctionSelectionWindow.xaml</DependentUpon>
     </Compile>
@@ -98,7 +102,11 @@
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
     <Compile Include="ViewModel\FunctionSelectionVM.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
-    <Compile Include="ViewModel\SetupVM.cs" />
+    <Compile Include="ViewModel\SummarizerVM.cs" />
+    <Page Include="UCs\QuantifierUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\FunctionSelectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

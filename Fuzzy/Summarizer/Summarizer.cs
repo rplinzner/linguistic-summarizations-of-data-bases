@@ -11,9 +11,6 @@ namespace Fuzzy.Summarizer
     {
         public Summarizer(string label, FuzzySet fuzzySet) : base(label, fuzzySet) { }
 
-        public override string ToString()
-        {
-            return base.Label + " " + base.FuzzySet.MembershipFunction;
-        }
+       
     }
 }

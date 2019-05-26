@@ -32,7 +32,7 @@
             <dragablz:TabablzControl TabStripPlacement="Top" FontSize="12" >
                 <dragablz:TabablzControl.ItemContainerStyle>
                     <Style BasedOn="{StaticResource MaterialDesignDragableTabItemStyle}" TargetType="{x:Type dragablz:DragablzItem}">
-                        <Setter Property="Width" Value="0"/>
+                        <Setter Property="Width" Value="Auto"/>
                         <Setter Property="Height" Value="50"/>
                         <Setter Property="HorizontalContentAlignment" Value="Left"/>
                         <Setter Property="FontSize" Value="9"/>
@@ -41,10 +41,17 @@
                 </dragablz:TabablzControl.ItemContainerStyle>
                 <TabItem  TextElement.Foreground="{DynamicResource MaterialDesignBody}">
                     <TabItem.Header>
-                        <TextBlock Text="Setup" TextWrapping="Wrap"/>
+                        <TextBlock Text="Summarizers" />
                     </TabItem.Header>
-                    <local:SetupUC DataContext="{Binding SetupVm}" />
+                    <local:SetupUC DataContext="{Binding SummarizerVm}" />
                     </TabItem>
+                <TabItem  TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+                    <TabItem.Header>
+                        <TextBlock Text="Quantifier" TextWrapping="Wrap"/>
+                    </TabItem.Header>
+                    <local:QuantifierUC DataContext="{Binding QuantifierVm}" />
+                </TabItem>
+
             </dragablz:TabablzControl>
         </materialDesign:ColorZone>
     </Border>

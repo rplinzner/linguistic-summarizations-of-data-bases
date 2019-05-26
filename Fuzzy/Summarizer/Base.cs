@@ -12,5 +12,9 @@ namespace Fuzzy.Summarizer
             Label = label;
             FuzzySet = fuzzySet;
         }
+        public override string ToString()
+        {
+            return Label + " " + FuzzySet.MembershipFunction;
+        }
     }
 }
