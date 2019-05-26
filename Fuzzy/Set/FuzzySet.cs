@@ -27,6 +27,16 @@ namespace Fuzzy.Set
             return Math.Min(Membership(x), other.Membership(x));
         }
 
+        public double TNorm(FuzzySet other, double x, double y)
+        {
+            return Math.Min(Membership(x), other.Membership(y));
+        }
+
+        public double SNorm(FuzzySet other, double x, double y)
+        {
+            return Math.Max(Membership(x), other.Membership(y));
+        }
+
         public bool Equals(FuzzySet other, double x)
         {
             return Membership(x).Equals(other.Membership(x));
