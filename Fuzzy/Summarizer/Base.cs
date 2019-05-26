@@ -5,12 +5,12 @@ namespace Fuzzy.Summarizer
 {
     public abstract class Base
     {
-        public Dictionary<string, FuzzySet> FuzzySets;
-        public Base()
+        public string Label { get; set; }
+        public FuzzySet FuzzySet { get; set; }
+        public Base(string label, FuzzySet fuzzySet)
         {
-            FuzzySets = new Dictionary<string, FuzzySet>();
+            Label = label;
+            FuzzySet = fuzzySet;
         }
-        public void AddLinguisticValue(string label, FuzzySet fuzzySet) => FuzzySets.Add(label, fuzzySet);
-        public void RemoveLinguisticValue(string label) => FuzzySets.Remove(label);
     }
 }

@@ -17,20 +17,13 @@ namespace FuzzySpecs
         {
             function = new TriangularFunction(0.0, 0.2);
             fuzzySet = new FuzzySet(function);
-            summarizer = new Summarizer();
+            summarizer = new Summarizer("YOUNG", fuzzySet);
         }
         [TestMethod]
         public void AddLinguisticValueToSummarizer()
         {
-            summarizer.AddLinguisticValue("YOUNG", fuzzySet);
-            Assert.AreEqual(summarizer.FuzzySets["YOUNG"], fuzzySet);
-        }
-        [TestMethod]
-        public void RemoveLinguisticVariableFromSummarizer()
-        {
-            summarizer.AddLinguisticValue("YOUNG", fuzzySet);
-            summarizer.RemoveLinguisticValue("YOUNG");
-            CollectionAssert.DoesNotContain(summarizer.FuzzySets, fuzzySet);
+            Assert.AreEqual(summarizer.FuzzySet, fuzzySet);
+            Assert.AreEqual(summarizer.Label, "YOUNG");
         }
     }
 }

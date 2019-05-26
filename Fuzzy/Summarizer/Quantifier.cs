@@ -5,6 +5,6 @@ namespace Fuzzy.Summarizer
 {
     public class Quantifier : Base
     {
-        public Quantifier() : base() { }
+        public Quantifier(string label, FuzzySet fuzzySet) : base(label, fuzzySet) { }
     }
 }

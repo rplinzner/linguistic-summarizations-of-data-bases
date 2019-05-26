@@ -9,6 +9,6 @@ namespace Fuzzy.Summarizer
 {
     public class Summarizer : Base
     {
-        public Summarizer() : base() { }
+        public Summarizer(string label, FuzzySet fuzzySet) : base(label, fuzzySet) { }
     }
 }

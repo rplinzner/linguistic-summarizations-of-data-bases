@@ -18,20 +18,13 @@ namespace FuzzySpecs
         {
             function = new TriangularFunction(0.0, 0.2);
             fuzzySet = new FuzzySet(function);
-            qualifier = new Qualifier();
+            qualifier = new Qualifier("YOUNG", fuzzySet);
         }
         [TestMethod]
         public void AddLinguisticValueToSummarizer()
         {
-            qualifier.AddLinguisticValue("YOUNG", fuzzySet);
-            Assert.AreEqual(qualifier.FuzzySets["YOUNG"], fuzzySet);
-        }
-        [TestMethod]
-        public void RemoveLinguisticVariableFromSummarizer()
-        {
-            qualifier.AddLinguisticValue("YOUNG", fuzzySet);
-            qualifier.RemoveLinguisticValue("YOUNG");
-            CollectionAssert.DoesNotContain(qualifier.FuzzySets, fuzzySet);
+            Assert.AreEqual(qualifier.FuzzySet, fuzzySet);
+            Assert.AreEqual(qualifier.Label, "YOUNG");
         }
     }
 }

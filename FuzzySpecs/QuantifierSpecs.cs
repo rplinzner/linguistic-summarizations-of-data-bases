@@ -17,20 +17,13 @@ namespace FuzzySpecs
         {
             function = new TriangularFunction(0.0, 0.2);
             fuzzySet = new FuzzySet(function);
-            quantifier = new Quantifier();
+            quantifier = new Quantifier("ALMOST NONE", fuzzySet);
         }
         [TestMethod]
         public void AddLinguisticValueToSummarizer()
         {
-            quantifier.AddLinguisticValue("ALMOST NONE", fuzzySet);
-            Assert.AreEqual(quantifier.FuzzySets["ALMOST NONE"], fuzzySet);
-        }
-        [TestMethod]
-        public void RemoveLinguisticVariableFromSummarizer()
-        {
-            quantifier.AddLinguisticValue("ALMOST NONE", fuzzySet);
-            quantifier.RemoveLinguisticValue("ALMOST NONE");
-            CollectionAssert.DoesNotContain(quantifier.FuzzySets, fuzzySet);
+            Assert.AreEqual(quantifier.FuzzySet, fuzzySet);
+            Assert.AreEqual(quantifier.Label, "ALMOST NONE");
         }
     }
 }
