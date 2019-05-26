@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Input;
+using Data;
 using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using View.ViewModel.Base;
@@ -20,15 +22,17 @@ namespace View.ViewModel
 
         #endregion
 
-        #region Command Props
 
-        public ICommand DoSomethingPlox { get; }
-
-        #endregion
 
         #region Props
 
-        
+        public List<Cover> Covers { get; set; }
+
+        #endregion
+
+        #region OtherVM
+
+        public SetupVM SetupVm { get; set; }
 
         #endregion
 
@@ -36,10 +40,8 @@ namespace View.ViewModel
         {
             ReadWindowsSetting();
             ApplyBase(_isDarkTheme);
-            DoSomethingPlox = new RelayCommand(() =>
-            {
-                MessageBox.Show("But I don't know what :(");
-            });
+            Covers = CoverRepository.All();
+            SetupVm = new SetupVM(this);
         }
 
         #region Theme Solving Methods

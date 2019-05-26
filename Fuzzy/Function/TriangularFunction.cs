@@ -12,6 +12,7 @@ namespace Fuzzy.Function
         // c
         //a b
 
+       
         public TriangularFunction(double a, double b, double height = 1.0)
         {
             A = a;
@@ -45,6 +46,11 @@ namespace Fuzzy.Function
         public double[] GetSupp()
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return "Triangular";
         }
     }
 }

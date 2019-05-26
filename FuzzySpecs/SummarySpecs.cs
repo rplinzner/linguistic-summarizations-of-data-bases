@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Fuzzy.Summarizer;
 using Fuzzy.Function;
+using Fuzzy.Quality;
 using Fuzzy.Set;
 
 namespace FuzzySpecs
@@ -24,7 +26,7 @@ namespace FuzzySpecs
             quantifierFuzzySet = new FuzzySet(quantifierTrapezoidalFunction);
             summarizerFuzzySet = new FuzzySet(summarizerTrapezoidalFunction);
             quantifier = new Quantifier("SOME", quantifierFuzzySet);
-            summarizerFuzzySet = new Summarizer("YOUNG", summarizerFuzzySet);
+            summarizer = new Summarizer("YOUNG", summarizerFuzzySet);
         }
 
         [TestMethod]
@@ -35,11 +37,12 @@ namespace FuzzySpecs
                 38,31,36,24,30,24,45,38,28,40,45,50
             };
             string p = "People";
-            string summary = $"{quantifier.Label} {p} ARE/HAVE {summarizerLabel}";
+            string summary = $"{quantifier.Label} {p} ARE/HAVE {summarizer.Label}";
             DegreeOfTruth degreeOfTruth = new DegreeOfTruth()
             {
+
                 Summarizer1 = summarizer,
-                quantifier = quantifier,
+                Quantifier = quantifier,
                 ValuesForSummarizer1 = ages
             };
             double result = degreeOfTruth.Call();

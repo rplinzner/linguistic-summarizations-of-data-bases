@@ -11,6 +11,11 @@ namespace Fuzzy.Function
         public double Height { get; set; }
         //   d    c
         //  a      b
+
+        public TrapezoidalFunction()
+        {
+            
+        }
         public TrapezoidalFunction(double a, double b, double c, double d, double height = 1)
         {
             A = a;
@@ -43,6 +48,11 @@ namespace Fuzzy.Function
         public double[] GetSupp()
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return "Trapezoidal";
         }
     }
 }

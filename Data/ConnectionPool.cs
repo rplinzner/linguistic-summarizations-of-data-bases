@@ -7,7 +7,7 @@ namespace Data
     public class ConnectionPool
     {
         static string dbLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
-        public SQLiteConnection DbConnection = new SQLiteConnection($"DataSource={dbLocation}/covertype.db;Version=3;");
+        public SQLiteConnection DbConnection = new SQLiteConnection($"DataSource={dbLocation}\\covertype.db;Version=3;");
 
         public ConnectionPool()
         {

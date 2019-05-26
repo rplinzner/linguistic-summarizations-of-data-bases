@@ -6,8 +6,8 @@ namespace Fuzzy.Quality
 {
     public class DegreeOfTruth : IDegree
     {
-        public List<double> ValuesForSummarizer1 { get; set; }
-        public List<double> ValuesForSummarizer2 { get; set; }
+        public List<int> ValuesForSummarizer1 { get; set; }
+        public List<int> ValuesForSummarizer2 { get; set; }
         public Quantifier Quantifier;
         public Summarizer.Summarizer Summarizer1 { get; set; }
         public Summarizer.Summarizer Summarizer2 { get; set; }
@@ -15,7 +15,7 @@ namespace Fuzzy.Quality
 
         public double Call()
         {
-            double r = 0;
+            double r = 0.0;
             if(Operation == "OR")
             {
                 for(int i = 0; i < ValuesForSummarizer1.Count; i++)

@@ -5,7 +5,7 @@ namespace Fuzzy.Set
 {
     public class FuzzySet
     {
-        IFunction MembershipFunction { get; set; }
+       public IFunction MembershipFunction { get; set; }
 
         public FuzzySet(IFunction membershipFunction)
         {

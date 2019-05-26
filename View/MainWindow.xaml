@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:View"
         xmlns:viewModel="clr-namespace:View.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="550" Width="800"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -28,23 +29,23 @@
             Margin="5,10"
             Grid.Column="0"
         >
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <ComboBox Margin="15 0" materialDesign:HintAssist.Hint="Label 1" />
-                <ComboBox Margin="15 0" Grid.Row="0" Grid.Column="1" materialDesign:HintAssist.Hint="Label 2" />
-                <Button Margin="15 0" Grid.Row="1" Content="Do Something plox" Command="{Binding DoSomethingPlox}" />
+            <dragablz:TabablzControl TabStripPlacement="Top" FontSize="12" >
+                <dragablz:TabablzControl.ItemContainerStyle>
+                    <Style BasedOn="{StaticResource MaterialDesignDragableTabItemStyle}" TargetType="{x:Type dragablz:DragablzItem}">
+                        <Setter Property="Width" Value="0"/>
+                        <Setter Property="Height" Value="50"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                        <Setter Property="FontSize" Value="9"/>
+                    </Style>
 
-            </Grid>
+                </dragablz:TabablzControl.ItemContainerStyle>
+                <TabItem  TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+                    <TabItem.Header>
+                        <TextBlock Text="Setup" TextWrapping="Wrap"/>
+                    </TabItem.Header>
+                    <local:SetupUC DataContext="{Binding SetupVm}" />
+                    </TabItem>
+            </dragablz:TabablzControl>
         </materialDesign:ColorZone>
     </Border>
 
