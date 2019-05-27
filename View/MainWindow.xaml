@@ -22,8 +22,7 @@
     </Window.DataContext>
 
     <Border Padding="10">
-
-        
+      
             
                <Grid>
                    <Grid.RowDefinitions>
@@ -34,13 +33,15 @@
                        <MenuItem
                            Header="_File">
                            <MenuItem
-                               Header="_Save">
+                               Header="_Save"
+                               Command="{Binding Save}">
                                <MenuItem.Icon>
                                    <materialDesign:PackIcon
                                        Kind="ContentSave" />
                                </MenuItem.Icon>
                            </MenuItem>
-                           <MenuItem Header="_Open">
+                           <MenuItem Header="_Open"
+                                     Command="{Binding Open}">
                                <MenuItem.Icon>
                                    <materialDesign:PackIcon Kind="OpenInApp"></materialDesign:PackIcon>
                                </MenuItem.Icon>

@@ -4,6 +4,7 @@ using System.Windows.Input;
 using Data;
 using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
+using Serialization;
 using View.ViewModel.Base;
 
 namespace View.ViewModel
@@ -27,6 +28,8 @@ namespace View.ViewModel
         #region Props
 
         public List<Cover> Covers { get; set; }
+        public ICommand Save { get; set; }
+        public ICommand Open { get; set; }
 
         #endregion
 
@@ -44,6 +47,8 @@ namespace View.ViewModel
             Covers = CoverRepository.All();
             SummarizerVm = new SummarizerVM(this);
             QuantifierVm = new QuantifierVM(this);
+            Save = new RelayCommand(OnSave);
+            Open = new RelayCommand(OnOpen);
         }
 
         #region Theme Solving Methods
@@ -79,5 +84,48 @@ namespace View.ViewModel
 
         #endregion
 
+
+        private void OnSave()
+        {
+            SaveFileDialog sfd = new SaveFileDialog()
+            {
+                AddExtension = true,
+                DefaultExt = "json",
+                FileName = "data",
+                Filter = "JSON files (*.json)|*.json",
+                RestoreDirectory = true
+            };
+
+            var result = sfd.ShowDialog();
+            if (result == true)
+            {
+                SerializeObject data = new SerializeObject()
+                {
+                    Quantifiers = QuantifierVm.Quantifiers,
+                    SummarizerAttributesList = SummarizerVm.AttributesList
+                };
+                JsonSerializer.Serialize<SerializeObject>(data, sfd.FileName);
+            }
+        }
+
+        private void OnOpen()
+        {
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                FileName = "data",
+                DefaultExt = "json",
+                Filter = "JSON files (*.json)|*.json",
+                RestoreDirectory = true
+            };
+            var result = ofd.ShowDialog();
+            if (result == true)
+            {
+                var data = JsonSerializer.Deserialize<SerializeObject>(ofd.FileName);
+                QuantifierVm.Quantifiers = data.Quantifiers;
+                SummarizerVm.AttributesList = data.SummarizerAttributesList;
+            }
+            
+        }
+            
     }
 }
