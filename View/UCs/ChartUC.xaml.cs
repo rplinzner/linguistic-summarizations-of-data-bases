@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace View
 {
     /// <summary>
-    /// Interaction logic for SummarizationUC.xaml
+    /// Interaction logic for ChartUC.xaml
     /// </summary>
-    public partial class SummarizationUC : UserControl
+    public partial class ChartUC : UserControl
     {
-        public SummarizationUC()
+        public ChartUC()
         {
             InitializeComponent();
         }

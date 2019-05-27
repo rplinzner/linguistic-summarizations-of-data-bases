@@ -5,6 +5,10 @@ using System.Windows.Input;
 using Fuzzy.Function;
 using Fuzzy.Set;
 using Fuzzy.Summarizer;
+using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
+using LiveCharts.Wpf.Charts.Base;
 using View.ViewModel.Base;
 
 namespace View.ViewModel
@@ -13,7 +17,21 @@ namespace View.ViewModel
     {
         private MainWindowVM Parent { get; set; }
         public ObservableCollection<AttributesListVm> AttributesList { get; set; }
-        public AttributesListVm AttributeSelected { get; set; }
+
+        public AttributesListVm AttributeSelected
+        {
+            get
+            {
+                return _attributeSelected;
+            }
+            set
+            {
+                
+                _attributeSelected = value;
+                OnPropertyChanged(nameof(AttributeSelected));
+                Draw();
+            }
+        }
 
         public ObservableCollection<string> FunctionComboBox { get; set; }
         public string SelectedFunction
@@ -27,12 +45,19 @@ namespace View.ViewModel
         public ICommand OpenFunctionParamsWindow { get; set; }
         public ICommand Details { get; }
         public ICommand Remove { get; }
-        
+
 
         public FunctionSelectionVM FunctionSelectionVm { get; set; }
 
         public Summarizer SummarizerSelected { get; set; }
         private FunctionSelectionWindow _window;
+        private AttributesListVm _attributeSelected;
+       
+        public SeriesCollection SeriesCollection { get; set; }
+
+        
+
+
 
         public SummarizerVM(MainWindowVM parent)
         {
@@ -42,10 +67,10 @@ namespace View.ViewModel
                 "Trapezoidal",
                 "Triangular"
             };
-           
+
             OpenFunctionParamsWindow = new RelayCommand(ShowFunctionWindow);
             Remove = new RelayCommand(OnRemove);
-            Details=new RelayCommand(OnDetails);
+            Details = new RelayCommand(OnDetails);
         }
 
         public void AddToCollection()
@@ -56,6 +81,48 @@ namespace View.ViewModel
                 return;
             }
             AttributeSelected.Summarizers.Add(new Summarizer(LabelNameTB, new FuzzySet(FunctionSelectionVm.Function)));
+            Draw();
+
+        }
+
+        private void Draw()
+        {
+            if (AttributeSelected == null)
+            {
+                return;
+            }
+            SeriesCollection = new SeriesCollection();
+            
+            foreach (var summarizer in AttributeSelected.Summarizers)
+            {
+                ChartValues<ObservablePoint> lineValues = new ChartValues<ObservablePoint>();
+                if (summarizer.FuzzySet.MembershipFunction.GetType() == typeof(TriangularFunction))
+                {
+                    var xs = summarizer.FuzzySet.MembershipFunction.GetValues();
+                    lineValues.Add(new ObservablePoint(xs[0], 0));
+                    lineValues.Add(new ObservablePoint(xs[2], 1));
+                    lineValues.Add(new ObservablePoint(xs[1], 0));
+                    
+                }
+                if (summarizer.FuzzySet.MembershipFunction.GetType() == typeof(TrapezoidalFunction))
+                {
+                    var xs = summarizer.FuzzySet.MembershipFunction.GetValues();
+                    lineValues.Add(new ObservablePoint(xs[0], 0));
+                    lineValues.Add(new ObservablePoint(xs[3], 1));
+                    lineValues.Add(new ObservablePoint(xs[2], 1));
+                    lineValues.Add(new ObservablePoint(xs[1], 0));
+                    
+                }
+                
+                SeriesCollection.Add(new LineSeries()
+                {
+                    Values = lineValues,
+                    Title = summarizer.Label,
+                    LineSmoothness = 0.0,
+                    ScalesYAt = 0
+                });
+            }
+
         }
 
         private void OnDetails()
@@ -97,6 +164,7 @@ namespace View.ViewModel
                 return;
             }
             AttributeSelected.Summarizers.Remove(SummarizerSelected);
+            Draw();
         }
 
         private void ShowFunctionWindow()
@@ -116,17 +184,17 @@ namespace View.ViewModel
                     DataContext = FunctionSelectionVm
                 };
                 _window.Show();
-                
-                
+
+
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
-            
+
 
         }
 
-       
+
     }
 }

@@ -91,7 +91,7 @@
                     </Button>
                 </StackPanel>
             </Grid>
-           
+           <local:ChartUC Grid.Row="2"/>
 
         </Grid>
     </Grid>

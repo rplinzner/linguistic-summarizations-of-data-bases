@@ -1,10 +1,7 @@
-﻿using System;
-using System.CodeDom;
-using System.Windows;
+﻿
 using System.Windows.Input;
 using Fuzzy.Function;
-using Newtonsoft.Json;
-using View.Converters;
+
 using View.ViewModel.Base;
 
 namespace View.ViewModel
