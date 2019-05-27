@@ -21,7 +21,6 @@ namespace View.ViewModel
                 {
                     CTriangleTB = value + ((BTB - value) / 2.0);
                 }
-                OnPropertyChanged(nameof(ATB));
             }
         }
 
@@ -38,7 +37,6 @@ namespace View.ViewModel
                 {
                     CTriangleTB = ATB + ((value - ATB) / 2.0);
                 }
-                OnPropertyChanged(nameof(BTB));
             }
         }
 
@@ -51,7 +49,6 @@ namespace View.ViewModel
             {
                 _ctb = value;
                 cTB.X = value;
-                OnPropertyChanged(nameof(CTB));
             }
 
         }
@@ -65,7 +62,6 @@ namespace View.ViewModel
             {
                 _dtb = value;
                 dTB.X = value;
-                OnPropertyChanged(nameof(DTB));
             }
         }
 
@@ -78,7 +74,6 @@ namespace View.ViewModel
             {
                 _cTriangleTb = value;
                 cTriangleTB.X = value;
-                OnPropertyChanged(nameof(CTriangleTB));
             }
         }
 

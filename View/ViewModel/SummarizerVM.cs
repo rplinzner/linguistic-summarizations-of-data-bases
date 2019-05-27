@@ -26,19 +26,13 @@ namespace View.ViewModel
             }
             set
             {
-                
                 _attributeSelected = value;
-                OnPropertyChanged(nameof(AttributeSelected));
                 Draw();
             }
         }
 
         public ObservableCollection<string> FunctionComboBox { get; set; }
-        public string SelectedFunction
-        {
-            get;
-            set;
-        }
+        public string SelectedFunction { get; set; }
 
 
         public string LabelNameTB { get; set; }
@@ -52,14 +46,10 @@ namespace View.ViewModel
         public Summarizer SummarizerSelected { get; set; }
         private FunctionSelectionWindow _window;
         private AttributesListVm _attributeSelected;
-       
+
         public SeriesCollection SeriesCollection { get; set; }
         public int MinValue { get; set; } = 0;
         public int MaxValue { get; set; } = 1;
-
-        
-
-
 
         public SummarizerVM(MainWindowVM parent)
         {
@@ -110,7 +100,7 @@ namespace View.ViewModel
                     lineValues.Add(new ObservablePoint(xs[0], 0));
                     lineValues.Add(new ObservablePoint(xs[2], 1));
                     lineValues.Add(new ObservablePoint(xs[1], 0));
-                    
+
                 }
                 if (summarizer.FuzzySet.MembershipFunction.GetType() == typeof(TrapezoidalFunction))
                 {
@@ -119,9 +109,9 @@ namespace View.ViewModel
                     lineValues.Add(new ObservablePoint(xs[3], 1));
                     lineValues.Add(new ObservablePoint(xs[2], 1));
                     lineValues.Add(new ObservablePoint(xs[1], 0));
-                    
+
                 }
-                
+
                 SeriesCollection.Add(new LineSeries()
                 {
                     Values = lineValues,
