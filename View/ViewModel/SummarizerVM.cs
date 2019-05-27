@@ -54,6 +54,8 @@ namespace View.ViewModel
         private AttributesListVm _attributeSelected;
        
         public SeriesCollection SeriesCollection { get; set; }
+        public int MinValue { get; set; } = 0;
+        public int MaxValue { get; set; } = 1;
 
         
 
@@ -92,7 +94,10 @@ namespace View.ViewModel
                 return;
             }
             SeriesCollection = new SeriesCollection();
-            
+            MinValue = AttributeSelected.Min;
+            MaxValue = AttributeSelected.Max;
+
+
             foreach (var summarizer in AttributeSelected.Summarizers)
             {
                 ChartValues<ObservablePoint> lineValues = new ChartValues<ObservablePoint>();

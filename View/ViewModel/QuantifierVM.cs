@@ -44,6 +44,8 @@ namespace View.ViewModel
             Remove=new RelayCommand(OnRemove);
         }
 
+
+
         public void AddToCollection()
         {
             if (FunctionSelectionVm.Function == null)

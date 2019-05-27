@@ -27,10 +27,8 @@
                 <wpf:Axis MinValue="0" MaxValue="1"  Title="Y" LabelFormatter="{Binding YFormatter}"></wpf:Axis>
             </wpf:CartesianChart.AxisY>
             <wpf:CartesianChart.AxisX>
-                <wpf:Axis Title="X" Labels="{Binding Labels}" >
-                    <wpf:Axis.Separator>
-                        <wpf:Separator IsEnabled="False" Step="1"></wpf:Separator>
-                    </wpf:Axis.Separator>
+                <wpf:Axis MinValue="{Binding MinValue}" MaxValue="{Binding MaxValue}" Title="X" Labels="{Binding Labels}" >
+                    
                 </wpf:Axis>
             </wpf:CartesianChart.AxisX>
         </wpf:CartesianChart>

@@ -20,33 +20,80 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>
+    <Border Padding="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <!-- Main Info -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <TextBlock Text="Min:" Margin="0 0 10 0" />
+                <TextBlock Text="{Binding MinValue}" Margin="0 0 100 0" FontWeight="Bold" />
+                <TextBlock Text="Max:" Margin="0 0 0 0" />
+                <TextBlock Text="{Binding MaxValue}" Margin="10 0 0 0" FontWeight="Bold" />
+            </StackPanel>
+            <!-- Top Textboxes -->
+            <Grid Grid.Row="1" Margin="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox
+                Grid.Column="3"
+                materialDesign:HintAssist.Hint="Apex C"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                Text="{Binding CTB, UpdateSourceTrigger=PropertyChanged}"
 
-    <Grid>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Min" Margin="0 0 10 0" />
-            <TextBlock Text="{Binding MinTB}" Margin="0 0 100 0" />
-            <TextBlock Text="Max" Margin="0 0 0 0" />
-            <TextBlock Text="{Binding MaxTB}" Margin="10 0 0 0" />
-        </StackPanel>
-        <StackPanel>
-            <TextBox
-                materialDesign:HintAssist.Hint="A"
+                Visibility="{Binding Path=IsTrapezoid, Converter={StaticResource BooleanToVisibilityConverter}}"
+                TextAlignment="Center"/>
+                <TextBox
+                Grid.Column="2"
+                materialDesign:HintAssist.Hint="Apex C"
+                IsReadOnly="True"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                Text="{Binding ATB}" />
-            <TextBox
-                materialDesign:HintAssist.Hint="B"
+                Text="{Binding CTriangleTB}"
+                Visibility="{Binding Path=IsTriangle, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <TextBox
+                Grid.Column="1"
+                materialDesign:HintAssist.Hint="Apex D"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                Text="{Binding BTB}" />
-            <TextBox
-                materialDesign:HintAssist.Hint="C"
+                Text="{Binding DTB, UpdateSourceTrigger=PropertyChanged}"
+                Visibility="{Binding Path=IsTrapezoid, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            </Grid>
+            <local:ChartUC Grid.Row="2" />
+
+            <Grid Grid.Row="3" Margin="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox
+                Grid.Column="0"
+                materialDesign:HintAssist.Hint="Apex A"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                Text="{Binding CTB}" />
-            <TextBox
-                materialDesign:HintAssist.Hint="D"
+                Text="{Binding ATB, UpdateSourceTrigger=PropertyChanged}"
+                TextAlignment="Center"/>
+                <TextBox
+                Grid.Column="4"
+                materialDesign:HintAssist.Hint="Apex B"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                Text="{Binding DTB}" />
+                Text="{Binding BTB, UpdateSourceTrigger=PropertyChanged}"
+                TextAlignment="Center"/>
+
+            </Grid>
             <Button
-                Margin="10"
+                Grid.Row="4"
+                Margin="0 4 0 0"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="300"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
@@ -54,6 +101,7 @@
                 Visibility="{Binding Path=IsAddButtonVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                 Add to collection
             </Button>
-        </StackPanel>
-    </Grid>
+           
+        </Grid>
+    </Border>
 </Window>
