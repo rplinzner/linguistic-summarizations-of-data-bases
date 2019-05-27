@@ -15,6 +15,11 @@
             throw new System.NotImplementedException();
         }
 
+        public double Cardinality()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public double[] GetCore() => new double[2] { double.NaN, double.NaN };
         public double[] GetSupp() => new double[2] { double.NaN, double.NaN };
     }

@@ -7,6 +7,7 @@
         double GetHeight();
         double SupportCardinality();
         double DomainCardinality();
+        double Cardinality();
         double[] GetCore();
         double[] GetSupp();
     }
