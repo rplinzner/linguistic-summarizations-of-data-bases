@@ -14,7 +14,8 @@ namespace Serialization
         {
             if (File.Exists(path))
             {
-                File.Delete(path);
+                File.Delete(path); 
+                
             }
 
             Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer
@@ -35,12 +36,16 @@ namespace Serialization
         public static T Deserialize<T>(string path)
         {
 
-            T obj = JsonConvert.DeserializeObject<T>(File.ReadAllText(path), new Newtonsoft.Json.JsonSerializerSettings
+            using (StreamReader sr = new StreamReader(path, true))
             {
-                TypeNameHandling = TypeNameHandling.Auto,
-                NullValueHandling = NullValueHandling.Ignore,
-            });
-            return obj;
+                T obj = JsonConvert.DeserializeObject<T>(sr.ReadToEnd(), new Newtonsoft.Json.JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.Auto,
+                    NullValueHandling = NullValueHandling.Ignore,
+                });
+                return obj;
+            }
+           
 
         }
     }
