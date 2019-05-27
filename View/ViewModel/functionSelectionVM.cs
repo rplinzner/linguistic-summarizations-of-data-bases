@@ -24,16 +24,7 @@ namespace View.ViewModel
         public ICommand Save { get; set; }
         
         public IFunctionSelector Parent { get; set; }
-
-        /*public FunctionSelectionVM(string function, int min, int max, IFunctionSelector parent, IFunction func)
-        {
-            _function = function;
-            Save = new RelayCommand(OnSave);
-            MinTB = min;
-            MaxTB = max;
-            Parent = parent;
-            Function = func;
-        }*/
+        public bool IsAddButtonVisible { get; set; } = true;
         public FunctionSelectionVM(string function, int min, int max, IFunctionSelector parent)
         {
             _function = function;
@@ -41,6 +32,29 @@ namespace View.ViewModel
             MinTB = min;
             MaxTB = max;
             Parent = parent;
+        }
+
+        public FunctionSelectionVM(IFunction function, int min, int max)
+        {
+            IsAddButtonVisible = false;
+            MinTB = min;
+            MaxTB = max;
+            if (function.GetType() == typeof(TriangularFunction))
+            {
+                var vals = function.GetValues();
+                ATB = vals[0];
+                BTB = vals[1];
+                CTB = vals[2];
+
+            }
+            else
+            {
+                var vals = function.GetValues();
+                ATB = vals[0];
+                BTB = vals[1];
+                CTB = vals[2];
+                DTB = vals[3];
+            }
         }
 
         private void OnSave()
