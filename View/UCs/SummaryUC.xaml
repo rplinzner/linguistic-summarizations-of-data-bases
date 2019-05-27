@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:View"
+             xmlns:helper="clr-namespace:View.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -97,49 +98,63 @@
         </Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Column="1">
             <ListView
-            
+            IsSynchronizedWithCurrentItem="True"
+            helper:GridViewSort.AutoSort="True"
             ItemsSource="{Binding Summaries}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn
                             DisplayMemberBinding="{Binding Description}"
-                            Header="Description" />
+                            Header="Description"
+                            helper:GridViewSort.PropertyName="Description" />
                         <GridViewColumn
                             DisplayMemberBinding="{Binding T1}"
-                            Header="T1" />
+                            Header="T1"  
+                            helper:GridViewSort.PropertyName="T1" />
                         <GridViewColumn
                             DisplayMemberBinding="{Binding T2}"
-                            Header="T2" />
+                            Header="T2"  
+                            helper:GridViewSort.PropertyName="T2" />
                         <GridViewColumn
                             DisplayMemberBinding="{Binding T3}"
-                            Header="T3" />
+                            Header="T3"  
+                            helper:GridViewSort.PropertyName="T3" />
                         <GridViewColumn
                             DisplayMemberBinding="{Binding T4}"
-                            Header="T4" />
+                            Header="T4"  
+                            helper:GridViewSort.PropertyName="T4" />
                         <GridViewColumn
                             DisplayMemberBinding="{Binding T5}"
-                            Header="T5" />
+                            Header="T5"  
+                            helper:GridViewSort.PropertyName="T5" />
                         <GridViewColumn
                             DisplayMemberBinding="{Binding T6}"
-                            Header="T6" />
+                            Header="T6"  
+                            helper:GridViewSort.PropertyName="T6" />
                         <GridViewColumn
                             DisplayMemberBinding="{Binding T7}"
-                            Header="T7" />
+                            Header="T7"  
+                            helper:GridViewSort.PropertyName="T7" />
                         <GridViewColumn
                             DisplayMemberBinding="{Binding T8}"
-                            Header="T8" />
+                            Header="T8"  
+                            helper:GridViewSort.PropertyName="T8" />
                         <GridViewColumn
                             DisplayMemberBinding="{Binding T9}"
-                            Header="T9" />
+                            Header="T9"  
+                            helper:GridViewSort.PropertyName="T9" />
                         <GridViewColumn
                             DisplayMemberBinding="{Binding T10}"
-                            Header="T10" />
+                            Header="T10" 
+                            helper:GridViewSort.PropertyName="T10"  />
                         <GridViewColumn
                             DisplayMemberBinding="{Binding T11}"
-                            Header="T11" />
+                            Header="T11" 
+                            helper:GridViewSort.PropertyName="T11"  />
                         <GridViewColumn
                             DisplayMemberBinding="{Binding T}"
-                            Header="T" />
+                            Header="T"
+                            helper:GridViewSort.PropertyName="T"/>
                     </GridView>
                 </ListView.View>
             </ListView>

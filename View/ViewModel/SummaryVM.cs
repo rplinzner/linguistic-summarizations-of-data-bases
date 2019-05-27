@@ -112,7 +112,7 @@ namespace View.ViewModel
                     T11 = Math.Round(new LengthOfQualifier().Call(), 2),
                 };
                 summary.CalculateT();
-                summary.T = Math.Round(summary.T, 2);
+                //summary.T = Math.Round(summary.T, 2);
 
                 Summaries.Add(summary);
             }
