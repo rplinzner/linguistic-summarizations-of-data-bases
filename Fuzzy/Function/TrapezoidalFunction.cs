@@ -39,7 +39,8 @@ namespace Fuzzy.Function
         }
 
         public double GetHeight() => Height;
-
+        public double SupportCardinality() => ((Math.Abs(B - A) + Math.Abs(D - C)) * Height) / 2.0;
+        public double DomainCardinality() => Math.Abs(B - A);
         public double[] GetCore()
         {
             throw new NotImplementedException();

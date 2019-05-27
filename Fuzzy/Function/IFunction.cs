@@ -5,6 +5,8 @@
         double Value(double x);
         double Range();
         double GetHeight();
+        double SupportCardinality();
+        double DomainCardinality();
         double[] GetCore();
         double[] GetSupp();
     }

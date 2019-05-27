@@ -41,5 +41,10 @@ namespace Fuzzy.Set
         {
             return Membership(x).Equals(other.Membership(x));
         }
+
+        public double DegreeOfFuzziness()
+        {
+            return MembershipFunction.SupportCardinality() / MembershipFunction.DomainCardinality();
+        }
     }
 }
