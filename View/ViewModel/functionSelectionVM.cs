@@ -16,7 +16,6 @@ namespace View.ViewModel
             set
             {
                 _atb = value;
-                
                 aTB.X = value;
                 if (IsTriangle)
                 {
@@ -103,10 +102,6 @@ namespace View.ViewModel
         public int MaxValue { get; set; }
         public SeriesCollection SeriesCollection { get; set; }
 
-
-
-
-
         public FunctionSelectionVM(string function, int min, int max, IFunctionSelector parent)
         {
             MinValue = min;
@@ -128,7 +123,7 @@ namespace View.ViewModel
                 DTB = min + delta;
             }
             Save = new RelayCommand(OnSave);
-            
+
             Parent = parent;
 
             Draw();
@@ -191,7 +186,7 @@ namespace View.ViewModel
                 Values = lineValues,
                 LineSmoothness = 0.0,
                 ScalesYAt = 0,
-                Name = _function
+                Title = _function
             });
 
         }
@@ -225,16 +220,15 @@ namespace View.ViewModel
                     {
                         BTB = MaxValue;
                     }
-                    if (DTB > MaxValue)
+                    if (CTB > MaxValue)
                     {
-                        DTB = MaxValue;
+                        CTB = MaxValue;
                     }
                     Function = new TrapezoidalFunction(ATB, BTB, CTB, DTB);
                     break;
             }
             Parent.AddToCollection();
             Parent.Close();
-
         }
 
     }
