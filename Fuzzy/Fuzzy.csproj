@@ -46,8 +46,10 @@
     <Compile Include="Function\TrapezoidalFunction.cs" />
     <Compile Include="Function\TriangularFunction.cs" />
     <Compile Include="Quality\DegreeOfImprecision.cs" />
+    <Compile Include="Quality\DegreeOfQuantifierImprecision.cs" />
     <Compile Include="Quality\DegreeOfTruth.cs" />
     <Compile Include="Quality\IDegree.cs" />
+    <Compile Include="Quality\LengthOfSummary.cs" />
     <Compile Include="Set\ClassicSet.cs" />
     <Compile Include="Set\FuzzySet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
