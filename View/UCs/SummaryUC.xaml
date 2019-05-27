@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="View.SummaryUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ComboBox
+                Grid.Row="0"
+                Margin="5"
+                ItemsSource="{Binding Path=Attributes}" 
+                SelectedValue="{Binding Path=SelectedAttribute}" 
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                materialDesign:HintAssist.Hint="Attribute"/>
+            <ComboBox
+                Grid.Row="1"
+                Margin="5"
+                ItemsSource="{Binding Path=Summarizers}" 
+                SelectedValue="{Binding Path=SelectedSummarizer}" 
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                materialDesign:HintAssist.Hint="Summarizer"/>
+            <ComboBox
+                Grid.Row="2"
+                Margin="5"
+                ItemsSource="{Binding Path=Attributes}" 
+                SelectedValue="{Binding Path=SelectedSecondAttribute}" 
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                materialDesign:HintAssist.Hint="Attribute"/>
+            <ComboBox
+                Grid.Row="3"
+                Margin="5"
+                ItemsSource="{Binding Path=SecondSummarizers}" 
+                SelectedValue="{Binding Path=SelectedSecondSummarizer}" 
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                materialDesign:HintAssist.Hint="Second Summarizer"/>
+            <ComboBox
+                Grid.Row="4"
+                Margin="5"
+                ItemsSource="{Binding Path=Subjects}" 
+                SelectedValue="{Binding Path=SelectedSubject}" 
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                materialDesign:HintAssist.Hint="Subject">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <ContentPresenter Content="{Binding Converter={StaticResource CovertypeConverter}}" 
+                                          />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox
+                Grid.Row="5"
+                Margin="5"
+                ItemsSource="{Binding Path=Qualifiers}" 
+                SelectedValue="{Binding Path=SelectedQualifiers}" 
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                materialDesign:HintAssist.Hint="Qualifier"/>
+            <ComboBox
+                Grid.Row="6"
+                Margin="5"
+                ItemsSource="{Binding Path=Conjunctions}" 
+                SelectedValue="{Binding Path=SelectedConjunction}" 
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                materialDesign:HintAssist.Hint="Conjunction"/>
+            <Button
+                Grid.Row="7"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Width="200"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                Command="{Binding Button}">
+                _Click Me!
+            </Button>
+        </Grid>
+
+    </Grid>
+</UserControl>

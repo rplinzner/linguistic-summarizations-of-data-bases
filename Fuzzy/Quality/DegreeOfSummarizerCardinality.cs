@@ -11,7 +11,7 @@ namespace Fuzzy.Quality
         public List<Summarizer.Summarizer> Summarizers { get; set; }
         public DegreeOfSummarizerCardinality(List<Summarizer.Summarizer> summarizers)
         {
-            Summarizers = Summarizers;
+            Summarizers = summarizers;
         }
         public double Call()
         {

@@ -82,7 +82,10 @@ namespace View.ViewModel
                 MessageBox.Show("Please setup function in configurator!");
                 return;
             }
-            AttributeSelected.Summarizers.Add(new Summarizer(LabelNameTB, new FuzzySet(FunctionSelectionVm.Function)));
+
+            var temp = new Summarizer(LabelNameTB, new FuzzySet(FunctionSelectionVm.Function));
+            AttributeSelected.Summarizers.Add(temp);
+            Parent.SummaryVm.Qualifiers.Add(temp);
             Draw();
 
         }

@@ -1,0 +1,180 @@
+{
+  "SummarizerAttributesList": [
+    {
+      "Name": "Elevation",
+      "Min": 1863,
+      "Max": 3849,
+      "Summarizers": []
+    },
+    {
+      "Name": "Slope",
+      "Min": 0,
+      "Max": 52,
+      "Summarizers": []
+    },
+    {
+      "Name": "HorizontalDistanceToHydrology",
+      "Min": 0,
+      "Max": 1343,
+      "Summarizers": []
+    },
+    {
+      "Name": "VerticalDistanceToHydrology",
+      "Min": -146,
+      "Max": 554,
+      "Summarizers": []
+    },
+    {
+      "Name": "HorizontalDistanceToRoadways",
+      "Min": 0,
+      "Max": 6890,
+      "Summarizers": []
+    },
+    {
+      "Name": "Hillshade9Am",
+      "Min": 0,
+      "Max": 254,
+      "Summarizers": []
+    },
+    {
+      "Name": "HillshadeNoon",
+      "Min": 99,
+      "Max": 254,
+      "Summarizers": []
+    },
+    {
+      "Name": "Hillshade3Pm",
+      "Min": 0,
+      "Max": 248,
+      "Summarizers": []
+    },
+    {
+      "Name": "HorizontalDistanceToFirePoints",
+      "Min": 30,
+      "Max": 6853,
+      "Summarizers": []
+    },
+    {
+      "Name": "Aspect",
+      "Min": 0,
+      "Max": 360,
+      "Summarizers": [
+        {
+          "Label": "EAST",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TriangularFunction, Fuzzy",
+              "A": 0.0,
+              "B": 180.0,
+              "C": 90.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "WEST",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TriangularFunction, Fuzzy",
+              "A": 180.0,
+              "B": 360.0,
+              "C": 270.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "NORTH",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TriangularFunction, Fuzzy",
+              "A": 270.0,
+              "B": 360.0,
+              "C": 315.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "SOUTH",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TriangularFunction, Fuzzy",
+              "A": 90.0,
+              "B": 270.0,
+              "C": 180.0,
+              "Height": 1.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "Quantifiers": [
+    {
+      "Label": "ALMOST NONE",
+      "FuzzySet": {
+        "MembershipFunction": {
+          "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+          "A": 0.0,
+          "B": 0.16,
+          "C": 0.04,
+          "D": 0.0,
+          "Height": 1.0
+        }
+      }
+    },
+    {
+      "Label": "SOME",
+      "FuzzySet": {
+        "MembershipFunction": {
+          "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+          "A": 0.12,
+          "B": 0.4,
+          "C": 0.32,
+          "D": 0.16,
+          "Height": 1.0
+        }
+      }
+    },
+    {
+      "Label": "ABOUT HALF",
+      "FuzzySet": {
+        "MembershipFunction": {
+          "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+          "A": 0.32,
+          "B": 0.68,
+          "C": 0.56,
+          "D": 0.44,
+          "Height": 1.0
+        }
+      }
+    },
+    {
+      "Label": "MANY",
+      "FuzzySet": {
+        "MembershipFunction": {
+          "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+          "A": 0.6,
+          "B": 0.88,
+          "C": 0.84,
+          "D": 0.68,
+          "Height": 1.0
+        }
+      }
+    },
+    {
+      "Label": "ALMOST ALL",
+      "FuzzySet": {
+        "MembershipFunction": {
+          "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+          "A": 0.84,
+          "B": 1.0,
+          "C": 1.0,
+          "D": 0.96,
+          "Height": 1.0
+        }
+      }
+    }
+  ]
+}

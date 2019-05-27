@@ -92,18 +92,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\CovertypeConverter.cs" />
+    <Compile Include="Helpers\Summary.cs" />
+    <Compile Include="UCs\SummaryUC.xaml.cs">
+      <DependentUpon>SummaryUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UCs\ChartUC.xaml.cs">
       <DependentUpon>ChartUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\SerializeObject.cs" />
     <Compile Include="IFunctionSelector.cs" />
-    <Compile Include="UCs\SummarizationUC.xaml.cs">
-      <DependentUpon>SummarizationUC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UCs\QuantifierUC.xaml.cs">
       <DependentUpon>QuantifierUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\QuantifierVM.cs" />
+    <Compile Include="ViewModel\SummaryVM.cs" />
     <Compile Include="Windows\FunctionSelectionWindow.xaml.cs">
       <DependentUpon>FunctionSelectionWindow.xaml</DependentUpon>
     </Compile>
@@ -117,11 +120,11 @@
     <Compile Include="ViewModel\FunctionSelectionVM.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="ViewModel\SummarizerVM.cs" />
-    <Page Include="UCs\ChartUC.xaml">
+    <Page Include="UCs\SummaryUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UCs\SummarizationUC.xaml">
+    <Page Include="UCs\ChartUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -198,9 +201,7 @@
       <Name>Serialization</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.5.0.6\build\Fody.targets" Condition="Exists('..\packages\Fody.5.0.6\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

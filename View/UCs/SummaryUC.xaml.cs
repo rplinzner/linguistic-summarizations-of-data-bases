@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace View
 {
     /// <summary>
-    /// Interaction logic for SummarizationUC.xaml
+    /// Interaction logic for SummaryUC.xaml
     /// </summary>
-    public partial class SummarizationUC : UserControl
+    public partial class SummaryUC : UserControl
     {
-        public SummarizationUC()
+        public SummaryUC()
         {
             InitializeComponent();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

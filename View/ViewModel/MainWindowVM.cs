@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Data;
@@ -37,6 +38,7 @@ namespace View.ViewModel
 
         public SummarizerVM SummarizerVm { get; set; }
         public QuantifierVM QuantifierVm { get; set; }
+        public SummaryVM SummaryVm { get; set; }
 
         #endregion
 
@@ -47,6 +49,7 @@ namespace View.ViewModel
             Covers = CoverRepository.All();
             SummarizerVm = new SummarizerVM(this);
             QuantifierVm = new QuantifierVM(this);
+            SummaryVm = new SummaryVM(SummarizerVm.AttributesList, QuantifierVm.Quantifiers, this);
             Save = new RelayCommand(OnSave);
             Open = new RelayCommand(OnOpen);
         }
@@ -124,8 +127,17 @@ namespace View.ViewModel
                 QuantifierVm.Quantifiers = data.Quantifiers;
                 SummarizerVm.AttributesList = data.SummarizerAttributesList;
             }
-            
+            SummaryVm = new SummaryVM(SummarizerVm.AttributesList, QuantifierVm.Quantifiers, this);
+            var temp = SummarizerVm.AttributesList.Select(c => c.Summarizers).ToList();
+            foreach (var VARIABLE in temp)
+            {
+                foreach (var summarizer in VARIABLE)
+                {
+                    SummaryVm.Qualifiers.Add(summarizer);
+                }
+            }
+
         }
-            
+
     }
 }

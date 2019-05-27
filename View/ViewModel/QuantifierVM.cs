@@ -54,6 +54,7 @@ namespace View.ViewModel
                 return;
             }
             Quantifiers.Add(new Quantifier(LabelNameTB, new FuzzySet(FunctionSelectionVm.Function)));
+            
         }
 
         private void OnRemove()

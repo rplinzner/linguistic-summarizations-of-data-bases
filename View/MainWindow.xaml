@@ -72,8 +72,14 @@
                            </TabItem.Header>
                            <local:QuantifierUC DataContext="{Binding QuantifierVm}" />
                        </TabItem>
+                       <TabItem  TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+                           <TabItem.Header>
+                               <TextBlock Text="Summary" TextWrapping="Wrap"/>
+                           </TabItem.Header>
+                           <local:SummaryUC DataContext="{Binding SummaryVm}" />
+                       </TabItem>
 
-                   </dragablz:TabablzControl>
+            </dragablz:TabablzControl>
         </Grid> 
 
             
