@@ -56,6 +56,8 @@ namespace View.ViewModel
         public ObservableCollection<string> Conjunctions { get; set; }
         public string SelectedConjunction { get; set; }
 
+        public ObservableCollection<Summary> Summaries { get; set; } = new ObservableCollection<Summary>();
+
         public ICommand Button { get; set; }
 
         public ObservableCollection<Quantifier> Quantifiers { get; set; }
@@ -85,7 +87,6 @@ namespace View.ViewModel
         {
             CovertypeConverter convert = new CovertypeConverter();
             List<Cover> subject = Parent.Covers.Where(x => x.CoverType == SelectedSubject).ToList();
-            ObservableCollection<Summary> summaries = new ObservableCollection<Summary>();
             foreach (var quantifier in Quantifiers)
             {
                 string summarization = $"{quantifier} {convert.Convert(SelectedSubject, null, null, null)}";
@@ -95,63 +96,64 @@ namespace View.ViewModel
                 Summary summary = new Summary()
                 {
                     Description = summarization,
-                    T1 = new DegreeOfTruth()
+                    T1 = Math.Round(new DegreeOfTruth()
                     {
-                        Summarizer1 = SelectedSummarizer, Quantifier = quantifier,
+                        Summarizer1 = SelectedSummarizer,
+                        Quantifier = quantifier,
                         ValuesForSummarizer1 = Parent.Covers.Select(x => x.Aspect).ToList()
-                    }.Call(),
-                    T2 = new DegreeOfImprecision(new List<Summarizer>() {SelectedSummarizer}).Call(),
-                    T5 = new LengthOfSummary(new List<Summarizer>() {SelectedSummarizer}).Call(),
-                    T6 = new DegreeOfQuantifierImprecision(quantifier).Call(),
-                    T7 = new DegreeOfQuantifierCardinality(quantifier).Call(),
-                    T8 = new DegreeOfSummarizerCardinality(new List<Summarizer>() {SelectedSummarizer}).Call(),
-                    T9 = new DegreeOfQualifierImprecision().Call(),
-                    T10 = new DegreeOfQualifierImprecision().Call(),
-                    T11 = new LengthOfQualifier().Call(),
+                    }.Call(), 2),
+                    T2 = Math.Round(new DegreeOfImprecision(new List<Summarizer>() { SelectedSummarizer }).Call(), 2),
+                    T5 = Math.Round(new LengthOfSummary(new List<Summarizer>() { SelectedSummarizer }).Call(), 2),
+                    T6 = Math.Round(new DegreeOfQuantifierImprecision(quantifier).Call(), 2),
+                    T7 = Math.Round(new DegreeOfQuantifierCardinality(quantifier).Call(), 2),
+                    T8 = Math.Round(new DegreeOfSummarizerCardinality(new List<Summarizer>() { SelectedSummarizer }).Call(), 2),
+                    T9 = Math.Round(new DegreeOfQualifierImprecision().Call(), 2),
+                    T10 = Math.Round(new DegreeOfQualifierImprecision().Call(), 2),
+                    T11 = Math.Round(new LengthOfQualifier().Call(), 2),
                 };
                 summary.CalculateT();
+                summary.T = Math.Round(summary.T, 2);
 
-
-                summaries.Add(summary);
+                Summaries.Add(summary);
             }
 
-//            foreach (var quantifier in Quantifiers)
-//            {
-//                string summarization = $"{quantifier} {convert.Convert(SelectedSubject, null, null, null)}";
-//                //if (SelectedQualifiers != null)
-//                //{
-//                //    summarization += $" BEING/HAVING {SelectedQualifiers}";
-//                //}
-//                summarization += $" ARE/HAVE ${SelectedSecondSummarizer}";
-//
-//                summaries.Add(new Summary()
-//                {
-//                    Description = summarization,
-//                    T2 = new DegreeOfImprecision(new List<Summarizer>() {SelectedSecondSummarizer}).Call(),
-//                    T5 = new LengthOfSummary(new List<Summarizer>() {SelectedSecondSummarizer}).Call(),
-//                    T6 = new DegreeOfQuantifierImprecision(quantifier).Call(),
-//                    T7 = new DegreeOfQuantifierCardinality(quantifier).Call(),
-//                    T8 = new DegreeOfSummarizerCardinality(new List<Summarizer>() {SelectedSecondSummarizer}).Call(),
-//                    T9 = new DegreeOfQualifierImprecision().Call(),
-//                    T10 = new DegreeOfQualifierImprecision().Call(),
-//                    T11 = new LengthOfQualifier().Call(),
-//                });
-//            }
+            //            foreach (var quantifier in Quantifiers)
+            //            {
+            //                string summarization = $"{quantifier} {convert.Convert(SelectedSubject, null, null, null)}";
+            //                //if (SelectedQualifiers != null)
+            //                //{
+            //                //    summarization += $" BEING/HAVING {SelectedQualifiers}";
+            //                //}
+            //                summarization += $" ARE/HAVE ${SelectedSecondSummarizer}";
+            //
+            //                summaries.Add(new Summary()
+            //                {
+            //                    Description = summarization,
+            //                    T2 = new DegreeOfImprecision(new List<Summarizer>() {SelectedSecondSummarizer}).Call(),
+            //                    T5 = new LengthOfSummary(new List<Summarizer>() {SelectedSecondSummarizer}).Call(),
+            //                    T6 = new DegreeOfQuantifierImprecision(quantifier).Call(),
+            //                    T7 = new DegreeOfQuantifierCardinality(quantifier).Call(),
+            //                    T8 = new DegreeOfSummarizerCardinality(new List<Summarizer>() {SelectedSecondSummarizer}).Call(),
+            //                    T9 = new DegreeOfQualifierImprecision().Call(),
+            //                    T10 = new DegreeOfQualifierImprecision().Call(),
+            //                    T11 = new LengthOfQualifier().Call(),
+            //                });
+            //            }
 
-//            foreach (var quantifier in Quantifiers)
-//            {
-//                string summarization = $"{quantifier} {convert.Convert(SelectedSubject, null, null, null)}";
-//                //if (SelectedQualifiers != null)
-//                //{
-//                //    summarization += $" BEING/HAVING {SelectedQualifiers}";
-//                //}
-//                summarization += $" ARE/HAVE ${SelectedSecondSummarizer}";
-//
-//                Summary summary = new Summary()
-//                {
-//                    Description = summarization
-//                };
-//            }
+            //            foreach (var quantifier in Quantifiers)
+            //            {
+            //                string summarization = $"{quantifier} {convert.Convert(SelectedSubject, null, null, null)}";
+            //                //if (SelectedQualifiers != null)
+            //                //{
+            //                //    summarization += $" BEING/HAVING {SelectedQualifiers}";
+            //                //}
+            //                summarization += $" ARE/HAVE ${SelectedSecondSummarizer}";
+            //
+            //                Summary summary = new Summary()
+            //                {
+            //                    Description = summarization
+            //                };
+            //            }
         }
 
 

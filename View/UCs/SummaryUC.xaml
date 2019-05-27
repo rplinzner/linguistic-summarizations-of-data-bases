@@ -95,6 +95,56 @@
                 _Click Me!
             </Button>
         </Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Column="1">
+            <ListView
+            
+            ItemsSource="{Binding Summaries}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Description}"
+                            Header="Description" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding T1}"
+                            Header="T1" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding T2}"
+                            Header="T2" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding T3}"
+                            Header="T3" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding T4}"
+                            Header="T4" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding T5}"
+                            Header="T5" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding T6}"
+                            Header="T6" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding T7}"
+                            Header="T7" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding T8}"
+                            Header="T8" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding T9}"
+                            Header="T9" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding T10}"
+                            Header="T10" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding T11}"
+                            Header="T11" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding T}"
+                            Header="T" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ScrollViewer>
+
 
     </Grid>
 </UserControl>
