@@ -25,6 +25,8 @@ namespace View.ViewModel
 
         public string LabelNameTB { get; set; }
         public ICommand OpenFunctionParamsWindow { get; set; }
+        public ICommand Details { get; }
+        public ICommand Remove { get; }
         
 
         public FunctionSelectionVM FunctionSelectionVm { get; set; }
@@ -42,6 +44,8 @@ namespace View.ViewModel
             };
            
             OpenFunctionParamsWindow = new RelayCommand(ShowFunctionWindow);
+            Remove = new RelayCommand(OnRemove);
+            Details=new RelayCommand(OnDetails);
         }
 
         public void AddToCollection()
@@ -54,9 +58,45 @@ namespace View.ViewModel
             AttributeSelected.Summarizers.Add(new Summarizer(LabelNameTB, new FuzzySet(FunctionSelectionVm.Function)));
         }
 
+        private void OnDetails()
+        {
+            if (SummarizerSelected == null)
+            {
+                MessageBox.Show("Please choose summarizer");
+                return;
+            }
+
+            try
+            {
+                FunctionSelectionVm =
+                    new FunctionSelectionVM(SummarizerSelected.FuzzySet.MembershipFunction, AttributeSelected.Min, AttributeSelected.Max);
+                _window = new FunctionSelectionWindow()
+                {
+                    DataContext = FunctionSelectionVm
+                };
+                _window.Show();
+
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
         public void Close()
         {
             _window.Close();
+        }
+
+        private void OnRemove()
+        {
+            if (SummarizerSelected == null)
+            {
+                MessageBox.Show("Please choose summarizer");
+                return;
+            }
+            AttributeSelected.Summarizers.Remove(SummarizerSelected);
         }
 
         private void ShowFunctionWindow()

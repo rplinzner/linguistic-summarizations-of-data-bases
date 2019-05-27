@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using Fuzzy.Set;
@@ -23,7 +24,9 @@ namespace View.ViewModel
 
         public string LabelNameTB { get; set; }
         public ICommand OpenFunctionParamsWindow { get; set; }
-        
+        public ICommand Details { get; }
+        public ICommand Remove { get; }
+
 
         public FunctionSelectionVM FunctionSelectionVm { get; set; }
         private FunctionSelectionWindow _window;
@@ -37,6 +40,8 @@ namespace View.ViewModel
             };
             
             OpenFunctionParamsWindow = new RelayCommand(ShowFunctionWindow);
+            Details=new RelayCommand(OnDetails);
+            Remove=new RelayCommand(OnRemove);
         }
 
         public void AddToCollection()
@@ -47,6 +52,42 @@ namespace View.ViewModel
                 return;
             }
             Quantifiers.Add(new Quantifier(LabelNameTB, new FuzzySet(FunctionSelectionVm.Function)));
+        }
+
+        private void OnRemove()
+        {
+            if (QuantifierSelected == null)
+            {
+                MessageBox.Show("Please choose summarizer");
+                return;
+            }
+            Quantifiers.Remove(QuantifierSelected);
+        }
+
+        private void OnDetails()
+        {
+            if (QuantifierSelected == null)
+            {
+                MessageBox.Show("Please choose summarizer");
+                return;
+            }
+
+            try
+            {
+                FunctionSelectionVm =
+                    new FunctionSelectionVM(QuantifierSelected.FuzzySet.MembershipFunction, 0, 1);
+                _window = new FunctionSelectionWindow()
+                {
+                    DataContext = FunctionSelectionVm
+                };
+                _window.Show();
+
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void ShowFunctionWindow()
