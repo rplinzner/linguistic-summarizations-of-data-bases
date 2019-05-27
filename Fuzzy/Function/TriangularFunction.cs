@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Fuzzy.Function
 {
@@ -39,7 +40,7 @@ namespace Fuzzy.Function
         public double SupportCardinality() => (Math.Abs(B - A) * Height) / 2.0;
         public double DomainCardinality() => Math.Abs(B - A);
         public double Cardinality() => SupportCardinality();
-
+        public List<double> GetValues() => new List<double>() {A, B, C};
         public double[] GetCore()
         {
             throw new NotImplementedException();

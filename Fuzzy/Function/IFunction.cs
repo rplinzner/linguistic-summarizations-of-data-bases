@@ -1,4 +1,6 @@
-﻿namespace Fuzzy.Function
+﻿using System.Collections.Generic;
+
+namespace Fuzzy.Function
 {
     public interface IFunction
     {
@@ -8,6 +10,7 @@
         double SupportCardinality();
         double DomainCardinality();
         double Cardinality();
+        List<double> GetValues();
         double[] GetCore();
         double[] GetSupp();
     }

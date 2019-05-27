@@ -1,4 +1,6 @@
-﻿namespace Fuzzy.Function
+﻿using System.Collections.Generic;
+
+namespace Fuzzy.Function
 {
     public class EmptyFunction : IFunction
     {
@@ -16,6 +18,11 @@
         }
 
         public double Cardinality()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public List<double> GetValues()
         {
             throw new System.NotImplementedException();
         }
