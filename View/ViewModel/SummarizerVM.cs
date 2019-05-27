@@ -161,6 +161,7 @@ namespace View.ViewModel
 
         public void Close()
         {
+            LabelNameTB = string.Empty;
             _window.Close();
         }
 
