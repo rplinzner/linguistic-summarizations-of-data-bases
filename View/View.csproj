@@ -86,6 +86,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="IFunctionSelector.cs" />
     <Compile Include="UCs\QuantifierUC.xaml.cs">
       <DependentUpon>QuantifierUC.xaml</DependentUpon>
     </Compile>
@@ -97,7 +98,7 @@
       <DependentUpon>SetupUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AttributesListVm.cs" />
-    <Compile Include="ViewModel\AtributesLoader.cs" />
+    <Compile Include="Helpers\AtributesLoader.cs" />
     <Compile Include="ViewModel\Base\BaseVM.cs" />
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
     <Compile Include="ViewModel\FunctionSelectionVM.cs" />

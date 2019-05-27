@@ -7,7 +7,7 @@ using View.ViewModel.Base;
 
 namespace View.ViewModel
 {
-    public class QuantifierVM : BaseVM
+    public class QuantifierVM : BaseVM, IFunctionSelector
     {
         public MainWindowVM Parent { get; set; }
 
@@ -23,9 +23,10 @@ namespace View.ViewModel
 
         public string LabelNameTB { get; set; }
         public ICommand OpenFunctionParamsWindow { get; set; }
-        public ICommand AddQuantifier { get; set; }
+        
 
         public FunctionSelectionVM FunctionSelectionVm { get; set; }
+        private FunctionSelectionWindow _window;
 
         public QuantifierVM(MainWindowVM parent)
         {
@@ -34,11 +35,11 @@ namespace View.ViewModel
                 "Trapezoidal",
                 "Triangular"
             };
-            AddQuantifier = new RelayCommand(AddToQualifiers);
+            
             OpenFunctionParamsWindow = new RelayCommand(ShowFunctionWindow);
         }
 
-        private void AddToQualifiers()
+        public void AddToCollection()
         {
             if (FunctionSelectionVm.Function == null)
             {
@@ -55,12 +56,17 @@ namespace View.ViewModel
                 MessageBox.Show("Please choose function type");
                 return;
             }
-            FunctionSelectionVm = new FunctionSelectionVM(SelectedFunction, 0,1);
-            FunctionSelectionWindow window = new FunctionSelectionWindow()
+            FunctionSelectionVm = new FunctionSelectionVM(SelectedFunction, 0,1, this);
+            _window = new FunctionSelectionWindow()
             {
                 DataContext = FunctionSelectionVm
             };
-            window.Show();
+            _window.Show();
+        }
+
+        public void Close()
+        {
+            _window.Close();
         }
     }
 }

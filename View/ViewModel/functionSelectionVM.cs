@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using Fuzzy.Function;
 using View.ViewModel.Base;
@@ -17,13 +18,16 @@ namespace View.ViewModel
         public IFunction Function { get; set; }
         private string _function;
         public ICommand Save { get; set; }
+        
+        public IFunctionSelector Parent { get; set; }
 
-        public FunctionSelectionVM(string function, int min, int max)
+        public FunctionSelectionVM(string function, int min, int max, IFunctionSelector parent)
         {
             _function = function;
             Save = new RelayCommand(OnSave);
             MinTB = min;
             MaxTB = max;
+            Parent = parent;
         }
 
         private void OnSave()
@@ -37,6 +41,8 @@ namespace View.ViewModel
                     Function = new TrapezoidalFunction(ATB, BTB, CTB, DTB);
                     break;
             }
+            Parent.AddToCollection();
+            Parent.Close();
             
         }
 

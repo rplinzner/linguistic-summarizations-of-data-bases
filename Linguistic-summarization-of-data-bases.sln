@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fuzzy", "Fuzzy\Fuzzy.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuzzySpecs", "FuzzySpecs\FuzzySpecs.csproj", "{9C908757-FF34-4CDF-9E1F-B0E4A4F27A13}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serialization", "Serialization\Serialization.csproj", "{8E72E37E-94DB-4A4D-9BE5-12D22E89E5A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9C908757-FF34-4CDF-9E1F-B0E4A4F27A13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C908757-FF34-4CDF-9E1F-B0E4A4F27A13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C908757-FF34-4CDF-9E1F-B0E4A4F27A13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E72E37E-94DB-4A4D-9BE5-12D22E89E5A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E72E37E-94DB-4A4D-9BE5-12D22E89E5A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E72E37E-94DB-4A4D-9BE5-12D22E89E5A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E72E37E-94DB-4A4D-9BE5-12D22E89E5A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

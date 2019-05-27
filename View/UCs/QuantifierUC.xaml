@@ -41,14 +41,7 @@
             Command="{Binding OpenFunctionParamsWindow}">
                 Function Parameters
             </Button>
-            <Button
-                Grid.Column="0"
-                Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                Margin="8"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
-                Command="{Binding AddQuantifier}">
-                Add Quantifier
-            </Button>
+            
         </StackPanel>
 
         <ListBox 

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:View"
         xmlns:viewModel="clr-namespace:View.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="800"
+        Title="MainWindow" Height="600" Width="950"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -20,40 +20,63 @@
     <Window.DataContext>
         <viewModel:MainWindowVM />
     </Window.DataContext>
+
     <Border Padding="10">
-        <materialDesign:ColorZone
-            Padding="9"
-            CornerRadius="5"
-            VerticalAlignment="Stretch"
-            materialDesign:ShadowAssist.ShadowDepth="Depth2"
-            Margin="5,10"
-            Grid.Column="0"
-        >
-            <dragablz:TabablzControl TabStripPlacement="Top" FontSize="12" >
-                <dragablz:TabablzControl.ItemContainerStyle>
-                    <Style BasedOn="{StaticResource MaterialDesignDragableTabItemStyle}" TargetType="{x:Type dragablz:DragablzItem}">
-                        <Setter Property="Width" Value="Auto"/>
-                        <Setter Property="Height" Value="50"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                        <Setter Property="FontSize" Value="9"/>
-                    </Style>
 
-                </dragablz:TabablzControl.ItemContainerStyle>
-                <TabItem  TextElement.Foreground="{DynamicResource MaterialDesignBody}">
-                    <TabItem.Header>
-                        <TextBlock Text="Summarizers" />
-                    </TabItem.Header>
-                    <local:SetupUC DataContext="{Binding SummarizerVm}" />
-                    </TabItem>
-                <TabItem  TextElement.Foreground="{DynamicResource MaterialDesignBody}">
-                    <TabItem.Header>
-                        <TextBlock Text="Quantifier" TextWrapping="Wrap"/>
-                    </TabItem.Header>
-                    <local:QuantifierUC DataContext="{Binding QuantifierVm}" />
-                </TabItem>
+        
+            
+               <Grid>
+                   <Grid.RowDefinitions>
+                       <RowDefinition Height="Auto" />
+                       <RowDefinition Height="*" />
+                   </Grid.RowDefinitions>
+                   <Menu IsMainMenu="True">
+                       <MenuItem
+                           Header="_File">
+                           <MenuItem
+                               Header="_Save">
+                               <MenuItem.Icon>
+                                   <materialDesign:PackIcon
+                                       Kind="ContentSave" />
+                               </MenuItem.Icon>
+                           </MenuItem>
+                           <MenuItem Header="_Open">
+                               <MenuItem.Icon>
+                                   <materialDesign:PackIcon Kind="OpenInApp"></materialDesign:PackIcon>
+                               </MenuItem.Icon>
+                           </MenuItem>
+                       </MenuItem>
+                   </Menu>
 
-            </dragablz:TabablzControl>
-        </materialDesign:ColorZone>
-    </Border>
+
+                   <dragablz:TabablzControl TabStripPlacement="Top" FontSize="12" Grid.Row="1" >
+                       <dragablz:TabablzControl.ItemContainerStyle>
+                           <Style BasedOn="{StaticResource MaterialDesignDragableTabItemStyle}" TargetType="{x:Type dragablz:DragablzItem}">
+                               <Setter Property="Width" Value="Auto"/>
+                               <Setter Property="Height" Value="50"/>
+                               <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                               <Setter Property="FontSize" Value="9"/>
+                           </Style>
+
+                       </dragablz:TabablzControl.ItemContainerStyle>
+                       <TabItem  TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+                           <TabItem.Header>
+                               <TextBlock Text="Summarizers" />
+                           </TabItem.Header>
+                           <local:SetupUC DataContext="{Binding SummarizerVm}" />
+                       </TabItem>
+                       <TabItem  TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+                           <TabItem.Header>
+                               <TextBlock Text="Quantifier" TextWrapping="Wrap"/>
+                           </TabItem.Header>
+                           <local:QuantifierUC DataContext="{Binding QuantifierVm}" />
+                       </TabItem>
+
+                   </dragablz:TabablzControl>
+        </Grid> 
+
+            
+
+        </Border>
 
 </Window>
