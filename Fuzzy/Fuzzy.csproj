@@ -51,6 +51,7 @@
     <Compile Include="Quality\DegreeOfSummarizerCardinality.cs" />
     <Compile Include="Quality\DegreeOfTruth.cs" />
     <Compile Include="Quality\IDegree.cs" />
+    <Compile Include="Quality\LengthOfQualifier.cs" />
     <Compile Include="Quality\LengthOfSummary.cs" />
     <Compile Include="Set\ClassicSet.cs" />
     <Compile Include="Set\FuzzySet.cs" />
