@@ -59,13 +59,21 @@
             </Button>
 
         </StackPanel>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ListBox 
+                Grid.Row="0"
+                Margin="8"
+                ItemsSource="{Binding  Quantifiers}"
+                SelectedItem="{Binding QuantifierSelected}"
+            />
+            <local:ChartUC Grid.Row="1"/>
+        </Grid>
 
-        <ListBox 
-            Grid.Column="1"
-            Margin="8"
-            ItemsSource="{Binding  Quantifiers}"
-            SelectedItem="{Binding QuantifierSelected}"
-        />
+        
 
     </Grid>
 </UserControl>

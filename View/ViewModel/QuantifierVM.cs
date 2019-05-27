@@ -2,8 +2,12 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
+using Fuzzy.Function;
 using Fuzzy.Set;
 using Fuzzy.Summarizer;
+using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
 using View.ViewModel.Base;
 
 namespace View.ViewModel
@@ -31,6 +35,10 @@ namespace View.ViewModel
         public FunctionSelectionVM FunctionSelectionVm { get; set; }
         private FunctionSelectionWindow _window;
 
+        public SeriesCollection SeriesCollection { get; set; }
+        public int MinValue { get; set; } = 0;
+        public int MaxValue { get; set; } = 1;
+
         public QuantifierVM(MainWindowVM parent)
         {
             Parent = parent;
@@ -44,6 +52,43 @@ namespace View.ViewModel
             Remove=new RelayCommand(OnRemove);
         }
 
+        internal void Draw()
+        {
+            
+            SeriesCollection = new SeriesCollection();
+           
+            foreach (var quantifier in Quantifiers)
+            {
+                ChartValues<ObservablePoint> lineValues = new ChartValues<ObservablePoint>();
+                if (quantifier.FuzzySet.MembershipFunction.GetType() == typeof(TriangularFunction))
+                {
+                    var xs = quantifier.FuzzySet.MembershipFunction.GetValues();
+                    lineValues.Add(new ObservablePoint(xs[0], 0));
+                    lineValues.Add(new ObservablePoint(xs[2], 1));
+                    lineValues.Add(new ObservablePoint(xs[1], 0));
+
+                }
+                if (quantifier.FuzzySet.MembershipFunction.GetType() == typeof(TrapezoidalFunction))
+                {
+                    var xs = quantifier.FuzzySet.MembershipFunction.GetValues();
+                    lineValues.Add(new ObservablePoint(xs[0], 0));
+                    lineValues.Add(new ObservablePoint(xs[3], 1));
+                    lineValues.Add(new ObservablePoint(xs[2], 1));
+                    lineValues.Add(new ObservablePoint(xs[1], 0));
+
+                }
+
+                SeriesCollection.Add(new LineSeries()
+                {
+                    Values = lineValues,
+                    Title = quantifier.Label,
+                    LineSmoothness = 0.0,
+                    ScalesYAt = 0
+                });
+            }
+
+        }
+
 
 
         public void AddToCollection()
@@ -54,7 +99,8 @@ namespace View.ViewModel
                 return;
             }
             Quantifiers.Add(new Quantifier(LabelNameTB, new FuzzySet(FunctionSelectionVm.Function)));
-            
+            Draw();
+
         }
 
         private void OnRemove()
@@ -65,6 +111,7 @@ namespace View.ViewModel
                 return;
             }
             Quantifiers.Remove(QuantifierSelected);
+            Draw();
         }
 
         private void OnDetails()

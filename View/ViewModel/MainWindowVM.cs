@@ -129,6 +129,7 @@ namespace View.ViewModel
             }
             SummaryVm = new SummaryVM(SummarizerVm.AttributesList, QuantifierVm.Quantifiers, this);
             var temp = SummarizerVm.AttributesList.Select(c => c.Summarizers).ToList();
+            QuantifierVm.Draw();
             foreach (var VARIABLE in temp)
             {
                 foreach (var summarizer in VARIABLE)
