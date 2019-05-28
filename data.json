@@ -84,18 +84,6 @@
           }
         },
         {
-          "Label": "NORTH",
-          "FuzzySet": {
-            "MembershipFunction": {
-              "$type": "Fuzzy.Function.TriangularFunction, Fuzzy",
-              "A": 270.0,
-              "B": 360.0,
-              "C": 315.0,
-              "Height": 1.0
-            }
-          }
-        },
-        {
           "Label": "SOUTH",
           "FuzzySet": {
             "MembershipFunction": {
@@ -103,6 +91,19 @@
               "A": 90.0,
               "B": 270.0,
               "C": 180.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "NORTH",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 270.0,
+              "B": 360.0,
+              "C": 360.0,
+              "D": 360.0,
               "Height": 1.0
             }
           }
