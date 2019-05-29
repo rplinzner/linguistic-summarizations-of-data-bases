@@ -4,55 +4,515 @@
       "Name": "Elevation",
       "Min": 1863,
       "Max": 3849,
-      "Summarizers": []
+      "Summarizers": [
+        {
+          "Label": "HILL",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TriangularFunction, Fuzzy",
+              "A": 1863.0,
+              "B": 2543.0,
+              "C": 2203.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "HIGH GROUND",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 2300.0,
+              "B": 3300.0,
+              "C": 3100.0,
+              "D": 2450.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "MOUNTAIN",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 3000.0,
+              "B": 3849.0,
+              "C": 3650.0,
+              "D": 3250.0,
+              "Height": 1.0
+            }
+          }
+        }
+      ]
     },
     {
       "Name": "Slope",
       "Min": 0,
       "Max": 52,
-      "Summarizers": []
+      "Summarizers": [
+        {
+          "Label": "EARTHBOUND",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 0.0,
+              "B": 20.0,
+              "C": 0.0,
+              "D": 0.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "GENTLE SLOPE",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TriangularFunction, Fuzzy",
+              "A": 15.0,
+              "B": 30.0,
+              "C": 22.5,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "HIGH SLOPE",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TriangularFunction, Fuzzy",
+              "A": 25.0,
+              "B": 45.0,
+              "C": 35.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "STEEP",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 40.0,
+              "B": 52.0,
+              "C": 52.0,
+              "D": 45.0,
+              "Height": 1.0
+            }
+          }
+        }
+      ]
     },
     {
       "Name": "HorizontalDistanceToHydrology",
       "Min": 0,
       "Max": 1343,
-      "Summarizers": []
+      "Summarizers": [
+        {
+          "Label": "NEAR",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 0.0,
+              "B": 400.0,
+              "C": 0.0,
+              "D": 0.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "NOR FAR",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 300.0,
+              "B": 750.0,
+              "C": 600.0,
+              "D": 450.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "A BIT OF A ROAD",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 700.0,
+              "B": 1150.0,
+              "C": 1000.0,
+              "D": 850.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "FAR",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 1000.0,
+              "B": 1343.0,
+              "C": 1343.0,
+              "D": 1200.0,
+              "Height": 1.0
+            }
+          }
+        }
+      ]
     },
     {
       "Name": "VerticalDistanceToHydrology",
       "Min": -146,
       "Max": 554,
-      "Summarizers": []
+      "Summarizers": [
+        {
+          "Label": "LOWER",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": -146.0,
+              "B": 0.0,
+              "C": -146.0,
+              "D": -146.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "AT THE SAME LEVEL",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TriangularFunction, Fuzzy",
+              "A": -100.0,
+              "B": 100.0,
+              "C": 0.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "HIGHER",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 80.0,
+              "B": 350.0,
+              "C": 310.0,
+              "D": 120.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "A LOT HIGHER",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 300.0,
+              "B": 554.0,
+              "C": 554.0,
+              "D": 360.0,
+              "Height": 1.0
+            }
+          }
+        }
+      ]
     },
     {
       "Name": "HorizontalDistanceToRoadways",
       "Min": 0,
       "Max": 6890,
-      "Summarizers": []
+      "Summarizers": [
+        {
+          "Label": "FAR",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 4000.0,
+              "B": 6890.0,
+              "C": 6890.0,
+              "D": 4500.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "NEAR",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 0.0,
+              "B": 800.0,
+              "C": 400.0,
+              "D": 0.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "NOT FAR",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 600.0,
+              "B": 1500.0,
+              "C": 1300.0,
+              "D": 900.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "A BIT OF A ROAD",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 1300.0,
+              "B": 4200.0,
+              "C": 3800.0,
+              "D": 1700.0,
+              "Height": 1.0
+            }
+          }
+        }
+      ]
     },
     {
       "Name": "Hillshade9Am",
       "Min": 0,
       "Max": 254,
-      "Summarizers": []
+      "Summarizers": [
+        {
+          "Label": "DARK",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 0.0,
+              "B": 60.0,
+              "C": 0.0,
+              "D": 0.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "CLOUDY",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 40.0,
+              "B": 150.0,
+              "C": 110.0,
+              "D": 80.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "SUNNY",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 110.0,
+              "B": 200.0,
+              "C": 180.0,
+              "D": 140.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "BRIGHT",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 180.0,
+              "B": 254.0,
+              "C": 254.0,
+              "D": 220.0,
+              "Height": 1.0
+            }
+          }
+        }
+      ]
     },
     {
       "Name": "HillshadeNoon",
       "Min": 99,
       "Max": 254,
-      "Summarizers": []
+      "Summarizers": [
+        {
+          "Label": "DARK",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 99.0,
+              "B": 140.0,
+              "C": 120.0,
+              "D": 99.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "CLOUDY",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 120.0,
+              "B": 180.0,
+              "C": 160.0,
+              "D": 140.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "SUNNY",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 160.0,
+              "B": 220.0,
+              "C": 200.0,
+              "D": 180.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "BRIGHT",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 200.0,
+              "B": 254.0,
+              "C": 254.0,
+              "D": 220.0,
+              "Height": 1.0
+            }
+          }
+        }
+      ]
     },
     {
       "Name": "Hillshade3Pm",
       "Min": 0,
       "Max": 248,
-      "Summarizers": []
+      "Summarizers": [
+        {
+          "Label": "DARK",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 0.0,
+              "B": 120.0,
+              "C": 80.0,
+              "D": 0.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "CLOUDY",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 80.0,
+              "B": 180.0,
+              "C": 140.0,
+              "D": 120.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "SUNNY",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 140.0,
+              "B": 200.0,
+              "C": 180.0,
+              "D": 160.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "BRIGHT",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 180.0,
+              "B": 248.0,
+              "C": 248.0,
+              "D": 220.0,
+              "Height": 1.0
+            }
+          }
+        }
+      ]
     },
     {
       "Name": "HorizontalDistanceToFirePoints",
       "Min": 30,
       "Max": 6853,
-      "Summarizers": []
+      "Summarizers": [
+        {
+          "Label": "NEAR",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 30.0,
+              "B": 1800.0,
+              "C": 1000.0,
+              "D": 30.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "NOT FAR",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 1600.0,
+              "B": 3500.0,
+              "C": 3100.0,
+              "D": 2000.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "A BIT OF A ROAD",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 3200.0,
+              "B": 5700.0,
+              "C": 4800.0,
+              "D": 3800.0,
+              "Height": 1.0
+            }
+          }
+        },
+        {
+          "Label": "FAR",
+          "FuzzySet": {
+            "MembershipFunction": {
+              "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",
+              "A": 5400.0,
+              "B": 6853.0,
+              "C": 6853.0,
+              "D": 6000.0,
+              "Height": 1.0
+            }
+          }
+        }
+      ]
     },
     {
       "Name": "Aspect",
