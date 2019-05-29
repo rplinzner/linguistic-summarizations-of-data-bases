@@ -36,7 +36,7 @@ namespace View.ViewModel
             get => _selectedSecondAttribute;
             set
             {
-                _selectedSecondAttribute = value;+
+                _selectedSecondAttribute = value;
                 SecondSummarizers = value.Summarizers;
             }
         }
