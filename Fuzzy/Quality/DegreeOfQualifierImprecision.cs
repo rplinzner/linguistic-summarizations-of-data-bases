@@ -9,17 +9,20 @@ namespace Fuzzy.Quality
 {
     public class DegreeOfQualifierImprecision : IDegree
     {
-        public List<Qualifier> Qualifiers { get; set; } = new List<Qualifier>();
+        public List<Base> Qualifiers { get; set; } = new List<Base>();
         public DegreeOfQualifierImprecision() { }
-        public DegreeOfQualifierImprecision(List<Qualifier> qualifiers)
+        public DegreeOfQualifierImprecision(List<Summarizer.Summarizer> qualifiers)
         {
-            Qualifiers = qualifiers;
+            foreach (var summarizer in qualifiers)
+            {
+                Qualifiers.Add(summarizer);
+            }
         }
         public double Call()
         {
             if (Qualifiers.Count == 0) return 1;
             double result = 1;
-            foreach (Qualifier qualifier in Qualifiers)
+            foreach (Base qualifier in Qualifiers)
             {
                 result *= qualifier.FuzzySet.DegreeOfFuzziness();
             }

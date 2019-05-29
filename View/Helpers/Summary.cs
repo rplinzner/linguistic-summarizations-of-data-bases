@@ -20,7 +20,7 @@ namespace View.ViewModel
         public double Weight { get; set; } = 0.09;
         public void CalculateT()
         {
-            T = ((T1 + T2 + T3 + T4 + T5 + T6 + T7 + T8 + T9 + T10 + T11) * Weight) / 11;
+            T = (T1 + T2 + T3 + T4 + T5 + T6 + T7 + T8 + T9 + T10 + T11) / 11;
         }
     }
 }

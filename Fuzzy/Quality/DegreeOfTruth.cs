@@ -13,7 +13,7 @@ namespace Fuzzy.Quality
         public Summarizer.Summarizer Summarizer1 { get; set; }
         public Summarizer.Summarizer Summarizer2 { get; set; }
         public string Operation { get; set; } = "NONE";
-        public Qualifier Qualifier { get; set; }
+        public Base Qualifier { get; set; }
 
         public double Call()
         {

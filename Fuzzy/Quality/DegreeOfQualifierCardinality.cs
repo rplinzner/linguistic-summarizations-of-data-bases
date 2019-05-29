@@ -9,13 +9,13 @@ namespace Fuzzy.Quality
 {
     public class DegreeOfQualifierCardinality : IDegree
     {
-        public Qualifier Qualifier { get; set; }
+        public Base Qualifier { get; set; }
 
         public DegreeOfQualifierCardinality()
         {
 
         }
-        public DegreeOfQualifierCardinality(Qualifier qualifier)
+        public DegreeOfQualifierCardinality(Summarizer.Summarizer qualifier)
         {
             Qualifier = qualifier;
         }

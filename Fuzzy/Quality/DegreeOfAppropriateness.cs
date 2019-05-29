@@ -24,6 +24,7 @@ namespace Fuzzy.Quality
                 r *= R(Summarizer1, ValuesForSummarizer1);
                 r *= R(Summarizer2, ValuesForSummarizer2);
             }
+
             return Math.Abs(r - T3);
         }
 
@@ -34,8 +35,9 @@ namespace Fuzzy.Quality
             {
                 result.Add(summarizer.FuzzySet.Membership(i) > 0 ? 1 : 0);
             }
-
-            return result.Sum() / values.Count;
+            var temp = result.Sum();
+            var ret = (double)temp / values.Count;
+            return ret;
         }
     }
 }

@@ -9,15 +9,18 @@ namespace Fuzzy.Quality
 {
     public class LengthOfQualifier : IDegree
     {
-        public List<Qualifier> Qualifiers { get; set; } = new List<Qualifier>();
+        public List<Base> Qualifiers { get; set; } = new List<Base>();
 
         public LengthOfQualifier()
         {
 
         }
-        public LengthOfQualifier(List<Qualifier> qualifiers)
+        public LengthOfQualifier(List<Summarizer.Summarizer> qualifiers)
         {
-            Qualifiers = qualifiers;
+            foreach (Summarizer.Summarizer qualifier in qualifiers)
+            {
+                Qualifiers.Add(qualifier);
+            }
         }
 
         public double Call()

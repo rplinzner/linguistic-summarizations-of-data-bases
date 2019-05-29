@@ -14,7 +14,13 @@ namespace Fuzzy.Summarizer
         }
         public override string ToString()
         {
-            return Label + " " + FuzzySet.MembershipFunction;
+            if (FuzzySet !=null)
+            {
+                return Label + " " + FuzzySet.MembershipFunction;
+            }
+
+            return Label;
+
         }
     }
 }

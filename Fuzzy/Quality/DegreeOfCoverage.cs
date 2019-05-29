@@ -11,7 +11,7 @@ namespace Fuzzy.Quality
         public Summarizer.Summarizer Summarizer2 { get; set; }
         public List<int> ValuesForSummarizer1 { get; set; }
         public List<int> ValuesForSummarizer2 { get; set; }
-        public Qualifier Qualifier { get; set; }
+        public Base Qualifier { get; set; }
         public string Operation { get; set; } = "NONE";
         public DegreeOfCoverage()
         {
@@ -22,10 +22,10 @@ namespace Fuzzy.Quality
         {
             if (Qualifier == null)
             {
-                return tWithoutQualifier() / hWithoutQualifier();
+                return (double)tWithoutQualifier() / hWithoutQualifier();
             }
 
-            return t() / h();
+            return (double)t() / h();
         }
 
         private int t()
