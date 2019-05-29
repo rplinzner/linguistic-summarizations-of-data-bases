@@ -75,9 +75,9 @@
             </ComboBox>
             <ComboBox
                 Grid.Row="5"
-                Margin="5"
+                Margin="9,8,1,9"
                 ItemsSource="{Binding Path=Qualifiers}" 
-                SelectedValue="{Binding Path=SelectedQualifiers}" 
+                SelectedValue="{Binding Path=SelectedQualifier}" 
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                 materialDesign:HintAssist.Hint="Qualifier"/>
             <ComboBox
