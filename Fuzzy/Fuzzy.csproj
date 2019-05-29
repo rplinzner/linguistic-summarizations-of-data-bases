@@ -45,6 +45,7 @@
     <Compile Include="Function\IFunction.cs" />
     <Compile Include="Function\TrapezoidalFunction.cs" />
     <Compile Include="Function\TriangularFunction.cs" />
+    <Compile Include="Quality\DegreeOfCoverage.cs" />
     <Compile Include="Quality\DegreeOfImprecision.cs" />
     <Compile Include="Quality\DegreeOfQualifierCardinality.cs" />
     <Compile Include="Quality\DegreeOfQualifierImprecision.cs" />

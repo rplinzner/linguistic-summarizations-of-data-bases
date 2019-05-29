@@ -1,6 +1,7 @@
 ﻿using Fuzzy.Summarizer;
 using System;
 using System.Collections.Generic;
+using Fuzzy.Set;
 
 namespace Fuzzy.Quality
 {
@@ -12,17 +13,33 @@ namespace Fuzzy.Quality
         public Summarizer.Summarizer Summarizer1 { get; set; }
         public Summarizer.Summarizer Summarizer2 { get; set; }
         public string Operation { get; set; } = "NONE";
+        public Qualifier Qualifier { get; set; }
 
         public double Call()
         {
-            double r = 0.0;
-            if(Operation == "OR")
+            double r;
+            if (Qualifier == null)
             {
-                for(int i = 0; i < ValuesForSummarizer1.Count; i++)
+                r = rWithoutQualifier();
+            }
+            else
+            {
+                r = this.r();
+            }
+            return Quantifier.FuzzySet.Membership(r / ValuesForSummarizer1.Count);
+        }
+
+        private double rWithoutQualifier()
+        {
+            double r = 0.0;
+            if (Operation == "OR")
+            {
+                for (int i = 0; i < ValuesForSummarizer1.Count; i++)
                 {
                     r += Summarizer1.FuzzySet.SNorm(Summarizer2.FuzzySet, ValuesForSummarizer1[i], ValuesForSummarizer2[i]);
                 }
-            } else if(Operation == "AND")
+            }
+            else if (Operation == "AND")
             {
                 for (int i = 0; i < ValuesForSummarizer1.Count; i++)
                 {
@@ -36,7 +53,39 @@ namespace Fuzzy.Quality
                     r += Summarizer1.FuzzySet.Membership(ValuesForSummarizer1[i]);
                 }
             }
-            return Quantifier.FuzzySet.Membership(r / ValuesForSummarizer1.Count);
+
+            return r;
         }
+
+        private double r()
+        {
+            double result = 0.0;
+            if (Operation == "OR")
+            {
+                for (int i = 0; i < ValuesForSummarizer1.Count; i++)
+                {
+                    result += Math.Min(Summarizer1.FuzzySet.SNorm(Summarizer1.FuzzySet, ValuesForSummarizer1[i],ValuesForSummarizer2[i]), MembershipToQualifier(i));
+                }
+            }
+            else if (Operation == "AND")
+            {
+                for (int i = 0; i < ValuesForSummarizer1.Count; i++)
+                {
+                    result += Math.Min(Summarizer1.FuzzySet.TNorm(Summarizer1.FuzzySet, ValuesForSummarizer1[i], ValuesForSummarizer2[i]), MembershipToQualifier(i));
+                }
+            }
+            else
+            {
+                for (int i = 0; i < ValuesForSummarizer1.Count; i++)
+                {
+                    result += Summarizer1.FuzzySet.TNorm(Qualifier.FuzzySet, ValuesForSummarizer1[i],
+                        ValuesForSummarizer1[i]);
+                }
+            }
+
+            return result;
+        }
+
+        private double MembershipToQualifier(int i) => Qualifier.FuzzySet.SNorm(Qualifier.FuzzySet, ValuesForSummarizer1[i], ValuesForSummarizer2[i]);
     }
 }
