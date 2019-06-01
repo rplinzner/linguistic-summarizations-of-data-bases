@@ -101,7 +101,7 @@
                 Width="200"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                 Command="{Binding Button}">
-                _Click Me!
+                Click Me!
             </Button>
 
 
