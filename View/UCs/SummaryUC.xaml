@@ -30,6 +30,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <ComboBox
                 Grid.Row="0"
@@ -75,20 +76,27 @@
             </ComboBox>
             <ComboBox
                 Grid.Row="5"
+                Margin="5"
+                ItemsSource="{Binding Path=Attributes}" 
+                SelectedValue="{Binding Path=SelectedQualifierAttribute}" 
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                materialDesign:HintAssist.Hint="Qualifier Attribute"/>
+            <ComboBox
+                Grid.Row="6"
                 Margin="9,8,1,9"
                 ItemsSource="{Binding Path=Qualifiers}" 
                 SelectedValue="{Binding Path=SelectedQualifier}" 
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                 materialDesign:HintAssist.Hint="Qualifier"/>
             <ComboBox
-                Grid.Row="6"
+                Grid.Row="7"
                 Margin="5"
                 ItemsSource="{Binding Path=Conjunctions}" 
                 SelectedValue="{Binding Path=SelectedConjunction}" 
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                 materialDesign:HintAssist.Hint="Conjunction"/>
             <Button
-                Grid.Row="7"
+                Grid.Row="8"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="200"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
@@ -105,6 +113,7 @@
             </Grid.RowDefinitions>
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <ListView
+                    
             IsSynchronizedWithCurrentItem="True"
             helper:GridViewSort.AutoSort="True"
             ItemsSource="{Binding Summaries}">

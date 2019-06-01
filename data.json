@@ -121,7 +121,7 @@
           }
         },
         {
-          "Label": "NOR FAR",
+          "Label": "NOT FAR",
           "FuzzySet": {
             "MembershipFunction": {
               "$type": "Fuzzy.Function.TrapezoidalFunction, Fuzzy",

@@ -11,6 +11,7 @@ namespace Fuzzy.Quality
         public Summarizer.Summarizer Summarizer2 { get; set; }
         public List<int> ValuesForSummarizer1 { get; set; }
         public List<int> ValuesForSummarizer2 { get; set; }
+        public List<int> ValuesForQualifier { get; set; }
         public Base Qualifier { get; set; }
         public string Operation { get; set; } = "NONE";
         public DegreeOfCoverage()
@@ -20,7 +21,7 @@ namespace Fuzzy.Quality
 
         public double Call()
         {
-            if (Qualifier == null)
+            if (Qualifier == null || string.IsNullOrEmpty(Qualifier.Label))
             {
                 return (double)tWithoutQualifier() / hWithoutQualifier();
             }
@@ -33,9 +34,10 @@ namespace Fuzzy.Quality
             List<int> results = new List<int>();
             if (Summarizer2 == null)
             {
-                foreach (int x in ValuesForSummarizer1)
+                for (int i = 0; i < ValuesForSummarizer1.Count; i++)
                 {
-                    results.Add(Summarizer1.FuzzySet.Membership(x) > 0 && Qualifier.FuzzySet.Membership(x) > 0 ? 1 : 0);
+                    results.Add(Summarizer1.FuzzySet.Membership(ValuesForSummarizer1[i]) > 0 && Qualifier.FuzzySet.Membership(ValuesForQualifier[i]) > 0 ? 1 : 0);
+
                 }
             }
             else
@@ -44,14 +46,14 @@ namespace Fuzzy.Quality
                 {
                     for (int i = 0; i < ValuesForSummarizer1.Count; i++)
                     {
-                        results.Add(Summarizer1.FuzzySet.TNorm(Summarizer2.FuzzySet, ValuesForSummarizer1[i], ValuesForSummarizer2[i]) > 0 && Qualifier.FuzzySet.Membership(ValuesForSummarizer1[i]) > 0 && Qualifier.FuzzySet.Membership(ValuesForSummarizer2[i]) > 0 ? 1 : 0);
+                        results.Add(Summarizer1.FuzzySet.TNorm(Summarizer2.FuzzySet, ValuesForSummarizer1[i], ValuesForSummarizer2[i]) > 0 && Qualifier.FuzzySet.Membership(ValuesForQualifier[i]) > 0 ? 1 : 0);
                     }
                 }
                 else if (Operation == "OR")
                 {
                     for (int i = 0; i < ValuesForSummarizer1.Count; i++)
                     {
-                        results.Add(Summarizer1.FuzzySet.SNorm(Summarizer2.FuzzySet, ValuesForSummarizer1[i], ValuesForSummarizer2[i]) > 0 && Qualifier.FuzzySet.Membership(ValuesForSummarizer1[i]) > 0 && Qualifier.FuzzySet.Membership(ValuesForSummarizer2[i]) > 0 ? 1 : 0);
+                        results.Add(Summarizer1.FuzzySet.SNorm(Summarizer2.FuzzySet, ValuesForSummarizer1[i], ValuesForSummarizer2[i]) > 0 && Qualifier.FuzzySet.Membership(ValuesForQualifier[i]) > 0 ? 1 : 0);
                     }
                 }
             }
@@ -62,19 +64,10 @@ namespace Fuzzy.Quality
         private int h()
         {
             List<int> results = new List<int>();
-            if (Summarizer2 == null)
+
+            for (int i = 0; i < ValuesForQualifier.Count; i++)
             {
-                foreach (int x in ValuesForSummarizer1)
-                {
-                    results.Add(Qualifier.FuzzySet.Membership(x) > 0 ? 1 : 0);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < ValuesForSummarizer1.Count; i++)
-                {
-                    results.Add(Qualifier.FuzzySet.Membership(ValuesForSummarizer1[i]) > 0 && Qualifier.FuzzySet.Membership(ValuesForSummarizer2[i]) > 0 ? 1 : 0);
-                }
+                results.Add(Qualifier.FuzzySet.Membership(ValuesForQualifier[i]) > 0 ? 1 : 0);
             }
 
             return results.Sum();

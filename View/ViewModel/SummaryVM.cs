@@ -20,6 +20,7 @@ namespace View.ViewModel
     {
         private AttributesListVm _selectedAttribute;
         private AttributesListVm _selectedSecondAttribute;
+        private AttributesListVm _selectedQualifierAttribute;
 
         #region props
 
@@ -43,6 +44,16 @@ namespace View.ViewModel
             {
                 _selectedSecondAttribute = value;
                 SecondSummarizers = value.Summarizers;
+                CheckForNullElements();
+            }
+        }
+        public AttributesListVm SelectedQualifierAttribute
+        {
+            get => _selectedQualifierAttribute;
+            set
+            {
+                _selectedQualifierAttribute = value;
+                Qualifiers = value.Summarizers;
                 CheckForNullElements();
             }
         }
@@ -107,7 +118,7 @@ namespace View.ViewModel
                 AddExtension = true,
                 DefaultExt = "tex",
                 Filter = "LaTeX files (*.tex)|*.tex"
-                    
+
             };
             var fileName = "KSR_" + DateTime.Now.ToShortTimeString();
             sfd.FileName = fileName.Replace(':', '_');
@@ -172,30 +183,30 @@ namespace View.ViewModel
             switch (attr.Name)
             {
                 case "Elevation":
-                    return Parent.Covers.Select(x => x.Elevation).ToList();
+                    return Parent.Covers.Where(x => x.CoverType == SelectedSubject).Select(x => x.Elevation).ToList();
                 case "Slope":
-                    return Parent.Covers.Select(x => x.Slope).ToList();
+                    return Parent.Covers.Where(x => x.CoverType == SelectedSubject).Where(x => x.CoverType == SelectedSubject).Select(x => x.Slope).ToList();
                 case "HorizontalDistanceToHydrology":
-                    return Parent.Covers.Select(x => x.HorizontalDistanceToHydrology).ToList();
+                    return Parent.Covers.Where(x => x.CoverType == SelectedSubject).Select(x => x.HorizontalDistanceToHydrology).ToList();
                 case "VerticalDistanceToHydrology":
-                    return Parent.Covers.Select(x => x.VerticalDistanceToHydrology).ToList();
+                    return Parent.Covers.Where(x => x.CoverType == SelectedSubject).Select(x => x.VerticalDistanceToHydrology).ToList();
                 case "HorizontalDistanceToRoadways":
-                    return Parent.Covers.Select(x => x.HorizontalDistanceToRoadways).ToList();
+                    return Parent.Covers.Where(x => x.CoverType == SelectedSubject).Select(x => x.HorizontalDistanceToRoadways).ToList();
                 case "Hillshade9Am":
-                    return Parent.Covers.Select(x => x.Hillshade9Am).ToList();
+                    return Parent.Covers.Where(x => x.CoverType == SelectedSubject).Select(x => x.Hillshade9Am).ToList();
                 case "HillshadeNoon":
-                    return Parent.Covers.Select(x => x.HillshadeNoon).ToList();
+                    return Parent.Covers.Where(x => x.CoverType == SelectedSubject).Select(x => x.HillshadeNoon).ToList();
                 case "Hillshade3Pm":
-                    return Parent.Covers.Select(x => x.Hillshade3Pm).ToList();
+                    return Parent.Covers.Where(x => x.CoverType == SelectedSubject).Select(x => x.Hillshade3Pm).ToList();
                 case "HorizontalDistanceToFirePoints":
-                    return Parent.Covers.Select(x => x.HorizontalDistanceToFirePoints).ToList();
+                    return Parent.Covers.Where(x => x.CoverType == SelectedSubject).Select(x => x.HorizontalDistanceToFirePoints).ToList();
                 case "Aspect":
-                    return Parent.Covers.Select(x => x.Aspect).ToList();
+                    return Parent.Covers.Where(x => x.CoverType == SelectedSubject).Select(x => x.Aspect).ToList();
             }
 
             return null;
         }
-     
+
 
         private void Summarize()
         {
@@ -207,7 +218,7 @@ namespace View.ViewModel
 
             List<int> ValuesForSummarizer = ExtractColumn(SelectedAttribute);
             List<int> ValuesForSummarizer2 = null;
-
+            List<int> ValuesForQualifier = null;
             bool hasQualifier = SelectedQualifier != null && !string.IsNullOrEmpty(SelectedQualifier.Label);
             bool hasTwoSummarizers = SelectedSecondSummarizer != null && !string.IsNullOrEmpty(SelectedSecondSummarizer.Label);
             if (hasTwoSummarizers) //if second summarizer is selected
@@ -216,7 +227,6 @@ namespace View.ViewModel
             }
 
             CovertypeConverter convert = new CovertypeConverter();
-            List<Cover> subject = Parent.Covers.Where(x => x.CoverType == SelectedSubject).ToList();
 
 
             foreach (var quantifier in Quantifiers)
@@ -250,8 +260,11 @@ namespace View.ViewModel
                 var t11 = new LengthOfQualifier();
                 if (hasQualifier) //If Qualifier Is Applied
                 {
+                    ValuesForQualifier = ExtractColumn(SelectedQualifierAttribute);
                     t1.Qualifier = SelectedQualifier;
+                    t1.ValuesForQualifier = ValuesForQualifier;
                     t3.Qualifier = SelectedQualifier;
+                    t3.ValuesForQualifier = ValuesForQualifier;
                     t9 = new DegreeOfQualifierImprecision(new List<Summarizer> { SelectedQualifier });
                     t10 = new DegreeOfQualifierCardinality(SelectedQualifier);
                     t11 = new LengthOfQualifier(new List<Summarizer>() { SelectedQualifier });
@@ -319,6 +332,6 @@ namespace View.ViewModel
 
             return ret;
         }
-        
+
     }
 }

@@ -93,6 +93,10 @@ namespace View.ViewModel
 
             foreach (var summarizer in AttributeSelected.Summarizers)
             {
+                if (summarizer.FuzzySet == null)
+                {
+                    continue;
+                }
                 ChartValues<ObservablePoint> lineValues = new ChartValues<ObservablePoint>();
                 if (summarizer.FuzzySet.MembershipFunction.GetType() == typeof(TriangularFunction))
                 {
@@ -102,7 +106,7 @@ namespace View.ViewModel
                     lineValues.Add(new ObservablePoint(xs[1], 0));
 
                 }
-                if (summarizer.FuzzySet.MembershipFunction.GetType() == typeof(TrapezoidalFunction))
+                if (summarizer.FuzzySet.MembershipFunction.GetType() == typeof(TrapezoidalFunction) )
                 {
                     var xs = summarizer.FuzzySet.MembershipFunction.GetValues();
                     lineValues.Add(new ObservablePoint(xs[0], 0));

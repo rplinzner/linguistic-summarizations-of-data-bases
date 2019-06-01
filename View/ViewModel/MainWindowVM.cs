@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Data;
+using Fuzzy.Summarizer;
 using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using Serialization;
@@ -128,16 +129,16 @@ namespace View.ViewModel
                 SummarizerVm.AttributesList = data.SummarizerAttributesList;
             }
             SummaryVm = new SummaryVM(SummarizerVm.AttributesList, QuantifierVm.Quantifiers, this);
-            var temp = SummarizerVm.AttributesList.Select(c => c.Summarizers).ToList();
+           // var temp = SummarizerVm.AttributesList.Select(c => c.Summarizers).ToList();
             QuantifierVm.Draw();
-            foreach (var VARIABLE in temp)
-            {
-                foreach (var summarizer in VARIABLE)
-                {
-                    SummaryVm.Qualifiers.Add(summarizer);
-                }
-            }
-
+//            foreach (var VARIABLE in temp)
+//            {
+//                foreach (var summarizer in VARIABLE)
+//                {
+//                    SummaryVm.Qualifiers.Add(summarizer);
+//                }
+//            }
+//            SummaryVm.Qualifiers.Add(new Summarizer("", null));
         }
 
     }

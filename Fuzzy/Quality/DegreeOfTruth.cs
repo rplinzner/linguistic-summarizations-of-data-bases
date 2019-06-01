@@ -10,6 +10,7 @@ namespace Fuzzy.Quality
         public List<int> ValuesForSummarizer1 { get; set; }
         public List<int> ValuesForSummarizer2 { get; set; }
         public Quantifier Quantifier;
+        public List<int> ValuesForQualifier { get; set; }
         public Summarizer.Summarizer Summarizer1 { get; set; }
         public Summarizer.Summarizer Summarizer2 { get; set; }
         public string Operation { get; set; } = "NONE";
@@ -18,7 +19,7 @@ namespace Fuzzy.Quality
         public double Call()
         {
             double r;
-            if (Qualifier == null)
+            if (Qualifier == null || string.IsNullOrEmpty(Qualifier.Label))
             {
                 r = rWithoutQualifier();
             }
@@ -85,7 +86,6 @@ namespace Fuzzy.Quality
 
             return result;
         }
-
-        private double MembershipToQualifier(int i) => Qualifier.FuzzySet.SNorm(Qualifier.FuzzySet, ValuesForSummarizer1[i], ValuesForSummarizer2[i]);
+        private double MembershipToQualifier(int i) => Qualifier.FuzzySet.Membership(ValuesForQualifier[i]);
     }
 }
