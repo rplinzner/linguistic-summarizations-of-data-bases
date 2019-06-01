@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Windows;
@@ -8,6 +10,7 @@ using System.Windows.Input;
 using Data;
 using Fuzzy.Quality;
 using Fuzzy.Summarizer;
+using Microsoft.Win32;
 using View.Converters;
 using View.ViewModel.Base;
 
@@ -62,6 +65,8 @@ namespace View.ViewModel
         public ObservableCollection<Summary> Summaries { get; set; } = new ObservableCollection<Summary>();
 
         public ICommand Button { get; set; }
+        public ICommand ExportDataButton { get; set; }
+        public ICommand ClearSummaries { get; set; }
 
         public ObservableCollection<Quantifier> Quantifiers { get; set; }
 
@@ -86,6 +91,58 @@ namespace View.ViewModel
             var temp = parent.Covers.Select(c => c.CoverType).Distinct().ToList();
             Subjects = new ObservableCollection<int>(temp);
             Button = new RelayCommand(Summarize);
+            ExportDataButton = new RelayCommand(ExportData);
+            ClearSummaries = new RelayCommand(OnClearSummaries);
+        }
+
+        private void OnClearSummaries()
+        {
+            Summaries = new ObservableCollection<Summary>();
+        }
+
+        private void ExportData()
+        {
+            SaveFileDialog sfd = new SaveFileDialog()
+            {
+                AddExtension = true,
+                DefaultExt = "tex",
+                Filter = "LaTeX files (*.tex)|*.tex"
+                    
+            };
+            var fileName = "KSR_" + DateTime.Now.ToShortTimeString();
+            sfd.FileName = fileName.Replace(':', '_');
+            var result = sfd.ShowDialog();
+            if (result == true)
+            {
+                TextWriter tw = new StreamWriter(sfd.FileName);
+                foreach (var summary in Summaries)
+                {
+                    var temp = new object[]
+                    {
+                        summary.Description,
+                        summary.T1,
+                        summary.T2,
+                        summary.T3,
+                        summary.T4,
+                        summary.T5,
+                        summary.T6,
+                        summary.T7,
+                        summary.T8,
+                        summary.T9,
+                        summary.T10,
+                        summary.T11,
+                        summary.T
+                    };
+                    var temp1 = string.Format(
+                        "{0} & {1} & {2} & {3} & {4} & {5} & {6} & {7} & {8} & {9} & {10} & {11} & {12} \\\\",
+                        temp);
+                    tw.WriteLine(temp1);
+                    tw.WriteLine("\\hline");
+                }
+
+                tw.Close();
+                Process.Start(sfd.FileName, "notepad.exe");
+            }
         }
 
         private void CheckForNullElements()
@@ -236,6 +293,7 @@ namespace View.ViewModel
                     T11 = Math.Round(t11.Call(), 2),
                 };
                 summary.CalculateT();
+                summary.T = Math.Round(summary.T, 2);
                 Summaries.Add(summary);
             }
 

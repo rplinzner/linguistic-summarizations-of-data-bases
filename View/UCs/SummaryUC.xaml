@@ -95,70 +95,95 @@
                 Command="{Binding Button}">
                 _Click Me!
             </Button>
+
+
         </Grid>
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Column="1">
-            <ListView
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <ListView
             IsSynchronizedWithCurrentItem="True"
             helper:GridViewSort.AutoSort="True"
             ItemsSource="{Binding Summaries}">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
                             DisplayMemberBinding="{Binding Description}"
                             Header="Description"
                             helper:GridViewSort.PropertyName="Description" />
-                        <GridViewColumn
+                            <GridViewColumn
                             DisplayMemberBinding="{Binding T1}"
                             Header="T1"  
                             helper:GridViewSort.PropertyName="T1" />
-                        <GridViewColumn
+                            <GridViewColumn
                             DisplayMemberBinding="{Binding T2}"
                             Header="T2"  
                             helper:GridViewSort.PropertyName="T2" />
-                        <GridViewColumn
+                            <GridViewColumn
                             DisplayMemberBinding="{Binding T3}"
                             Header="T3"  
                             helper:GridViewSort.PropertyName="T3" />
-                        <GridViewColumn
+                            <GridViewColumn
                             DisplayMemberBinding="{Binding T4}"
                             Header="T4"  
                             helper:GridViewSort.PropertyName="T4" />
-                        <GridViewColumn
+                            <GridViewColumn
                             DisplayMemberBinding="{Binding T5}"
                             Header="T5"  
                             helper:GridViewSort.PropertyName="T5" />
-                        <GridViewColumn
+                            <GridViewColumn
                             DisplayMemberBinding="{Binding T6}"
                             Header="T6"  
                             helper:GridViewSort.PropertyName="T6" />
-                        <GridViewColumn
+                            <GridViewColumn
                             DisplayMemberBinding="{Binding T7}"
                             Header="T7"  
                             helper:GridViewSort.PropertyName="T7" />
-                        <GridViewColumn
+                            <GridViewColumn
                             DisplayMemberBinding="{Binding T8}"
                             Header="T8"  
                             helper:GridViewSort.PropertyName="T8" />
-                        <GridViewColumn
+                            <GridViewColumn
                             DisplayMemberBinding="{Binding T9}"
                             Header="T9"  
                             helper:GridViewSort.PropertyName="T9" />
-                        <GridViewColumn
+                            <GridViewColumn
                             DisplayMemberBinding="{Binding T10}"
                             Header="T10" 
                             helper:GridViewSort.PropertyName="T10"  />
-                        <GridViewColumn
+                            <GridViewColumn
                             DisplayMemberBinding="{Binding T11}"
                             Header="T11" 
                             helper:GridViewSort.PropertyName="T11"  />
-                        <GridViewColumn
+                            <GridViewColumn
                             DisplayMemberBinding="{Binding T}"
                             Header="T"
                             helper:GridViewSort.PropertyName="T"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </ScrollViewer>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </ScrollViewer>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="1">
+                <Button
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Width="200"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                Command="{Binding ExportDataButton}">
+                    _Export Data
+                </Button>
+                <Button
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    Width="200"
+                    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                    Command="{Binding ClearSummaries}" Margin="10 0 0 0">
+                    _Clear Summaries
+                </Button>
+            </StackPanel>
+
+        </Grid>
 
 
     </Grid>
