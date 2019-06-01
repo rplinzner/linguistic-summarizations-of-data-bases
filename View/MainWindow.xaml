@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:View"
         xmlns:viewModel="clr-namespace:View.ViewModel"
         mc:Ignorable="d"
-        Title="Linguistic Summarization of Data Bases by Rafał Plinzner and Michał Chudzik" Height="600" Width="950"
+        Title="Linguistic Summarization of Data Bases by Rafał Plinzner and Michał Chudzik" Height="650" Width="950"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
