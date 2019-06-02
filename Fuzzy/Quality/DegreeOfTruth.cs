@@ -83,8 +83,12 @@ namespace Fuzzy.Quality
                         ValuesForSummarizer1[i]);
                 }
             }
-
-            return result;
+            double denominator = 0.0;
+            foreach(int value in ValuesForQualifier)
+            {
+                denominator += Qualifier.FuzzySet.Membership(value);
+            }
+            return result / denominator;
         }
         private double MembershipToQualifier(int i) => Qualifier.FuzzySet.Membership(ValuesForQualifier[i]);
     }
