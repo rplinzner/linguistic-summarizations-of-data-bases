@@ -18,16 +18,17 @@ namespace Fuzzy.Quality
 
         public double Call()
         {
-            double r;
             if (Qualifier == null || string.IsNullOrEmpty(Qualifier.Label))
             {
-                r = rWithoutQualifier();
+                double r = rWithoutQualifier();
+                return Quantifier.FuzzySet.Membership(r / ValuesForSummarizer1.Count);
             }
             else
             {
-                r = this.r();
+                double r = this.r();
+                return Quantifier.FuzzySet.Membership(r);
             }
-            return Quantifier.FuzzySet.Membership(r / ValuesForSummarizer1.Count);
+
         }
 
         private double rWithoutQualifier()
@@ -65,7 +66,7 @@ namespace Fuzzy.Quality
             {
                 for (int i = 0; i < ValuesForSummarizer1.Count; i++)
                 {
-                    result += Math.Min(Summarizer1.FuzzySet.SNorm(Summarizer1.FuzzySet, ValuesForSummarizer1[i],ValuesForSummarizer2[i]), MembershipToQualifier(i));
+                    result += Math.Min(Summarizer1.FuzzySet.SNorm(Summarizer1.FuzzySet, ValuesForSummarizer1[i], ValuesForSummarizer2[i]), MembershipToQualifier(i));
                 }
             }
             else if (Operation == "AND")
@@ -84,7 +85,7 @@ namespace Fuzzy.Quality
                 }
             }
             double denominator = 0.0;
-            foreach(int value in ValuesForQualifier)
+            foreach (int value in ValuesForQualifier)
             {
                 denominator += Qualifier.FuzzySet.Membership(value);
             }
