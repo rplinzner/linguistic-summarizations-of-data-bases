@@ -185,7 +185,7 @@ namespace View.ViewModel
                 case "Elevation":
                     return Parent.Covers.Where(x => x.CoverType == SelectedSubject).Select(x => x.Elevation).ToList();
                 case "Slope":
-                    return Parent.Covers.Where(x => x.CoverType == SelectedSubject).Where(x => x.CoverType == SelectedSubject).Select(x => x.Slope).ToList();
+                    return Parent.Covers.Where(x => x.CoverType == SelectedSubject).Select(x => x.Slope).ToList();
                 case "HorizontalDistanceToHydrology":
                     return Parent.Covers.Where(x => x.CoverType == SelectedSubject).Select(x => x.HorizontalDistanceToHydrology).ToList();
                 case "VerticalDistanceToHydrology":
