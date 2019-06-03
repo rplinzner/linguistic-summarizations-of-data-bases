@@ -66,14 +66,14 @@ namespace Fuzzy.Quality
             {
                 for (int i = 0; i < ValuesForSummarizer1.Count; i++)
                 {
-                    result += Math.Min(Summarizer1.FuzzySet.SNorm(Summarizer1.FuzzySet, ValuesForSummarizer1[i], ValuesForSummarizer2[i]), MembershipToQualifier(i));
+                    result += Math.Min(Summarizer1.FuzzySet.SNorm(Summarizer2.FuzzySet, ValuesForSummarizer1[i], ValuesForSummarizer2[i]), MembershipToQualifier(i));
                 }
             }
             else if (Operation == "AND")
             {
                 for (int i = 0; i < ValuesForSummarizer1.Count; i++)
                 {
-                    result += Math.Min(Summarizer1.FuzzySet.TNorm(Summarizer1.FuzzySet, ValuesForSummarizer1[i], ValuesForSummarizer2[i]), MembershipToQualifier(i));
+                    result += Math.Min(Summarizer1.FuzzySet.TNorm(Summarizer2.FuzzySet, ValuesForSummarizer1[i], ValuesForSummarizer2[i]), MembershipToQualifier(i));
                 }
             }
             else
@@ -81,7 +81,7 @@ namespace Fuzzy.Quality
                 for (int i = 0; i < ValuesForSummarizer1.Count; i++)
                 {
                     result += Summarizer1.FuzzySet.TNorm(Qualifier.FuzzySet, ValuesForSummarizer1[i],
-                        ValuesForSummarizer1[i]);
+                        ValuesForQualifier[i]);
                 }
             }
             double denominator = 0.0;
